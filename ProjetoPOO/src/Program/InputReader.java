@@ -2,7 +2,7 @@ package Program;
 
 import java.util.Scanner;
 
-public class Print {
+public class InputReader {
     Scanner scanner = new Scanner(System.in);
 
     public void divisoesMenu(){
