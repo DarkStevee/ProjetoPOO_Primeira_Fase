@@ -1,6 +1,7 @@
 package Program;
 
 import Exceptions.ParedException;
+import Modules.Module;
 import java.util.ArrayList;
 
 public class Console {
@@ -11,6 +12,7 @@ public class Console {
     private final int clientNumber;
     private ArrayList<Room> rooms;
     private Wifi wifiConnections;
+    private ArrayList<Module> modules;
 
     public Console(String clientName) {
         this.clientName = clientName;
@@ -29,6 +31,6 @@ public class Console {
     
     @Override
     public String toString() {
-        return clientName;
+        return clientName + clientNumber;
     }
 }

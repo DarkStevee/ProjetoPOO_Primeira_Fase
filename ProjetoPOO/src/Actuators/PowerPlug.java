@@ -3,7 +3,7 @@ package Actuators;
 import Program.Identifier;
 
 
-public class PowerPlug {
+public class PowerPlug extends Actuators {
     Identifier plugId;
     private int tempMinutes;
 

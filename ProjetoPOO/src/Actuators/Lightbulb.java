@@ -1,6 +1,6 @@
 package Actuators;
 
-public class Lightbulb {
+public class Lightbulb extends Actuators {
     private int lightIntensity;
 
 

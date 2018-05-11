@@ -1,7 +1,7 @@
 package Actuators;
 
 
-public class AirConditioning {
+public class AirConditioning extends Actuators{
     private boolean on;//16 e 28
 
     public AirConditioning(){

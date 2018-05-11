@@ -2,8 +2,11 @@ package Modules;
 
 public class LightControlModule {
 
-    public void LightAutomaticControl(){
-
+    private 
+    private LightBulb light;
+    
+    public void act(){
+        
     }
 
     public void lightOn(){

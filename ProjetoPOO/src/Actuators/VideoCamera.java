@@ -1,8 +1,7 @@
 package Actuators;
 
-public class VideoCamera {
+public class VideoCamera extends PhotoCamera {
     private final int RECORD = 5; //5 segundos
     
-    private boolean flash;
-    private PhotoFormat photoFormat;
+    
 }
