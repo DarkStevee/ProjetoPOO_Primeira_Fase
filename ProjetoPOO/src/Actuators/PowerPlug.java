@@ -8,7 +8,7 @@ public class PowerPlug {
     private int tempMinutes;
 
     public PowerPlug() {
-        plugId = new Identifier();
+        plugId = new Identifier("Plug");
     }
 
 
