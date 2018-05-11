@@ -16,4 +16,16 @@ public class Wifi {
     public Wifi() {
         connections = new HashMap<>();
     }
+    
+    public void addConnection(Identifier identifier1, Identifier identifier2) throws NullPointerException {
+        if(identifier1 == null || identifier2 == null) {
+            throw new NullPointerException("One of the identifiers is null");
+        }
+        
+        connections.put(identifier1, identifier2);
+    }
+    
+    public boolean isPared(Identifier identifer) {
+        connections.containsKey(identifer);
+    }
 }

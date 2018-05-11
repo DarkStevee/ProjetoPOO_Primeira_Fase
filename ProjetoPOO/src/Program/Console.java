@@ -14,4 +14,6 @@ public class Console {
         rooms = new ArrayList<>();
         wifiConnections = new Wifi();
     }
+    
+    void 
 }
