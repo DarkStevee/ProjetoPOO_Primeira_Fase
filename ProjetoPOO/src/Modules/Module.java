@@ -11,11 +11,6 @@ package Modules;
  */
 public abstract class Module {
 
-    public boolean isOkay() {
-        
-        
-    }
-
     public void act() {
 
     }

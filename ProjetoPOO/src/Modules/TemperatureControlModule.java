@@ -17,8 +17,4 @@ public class TemperatureControlModule {
     public void TurnACOn(){
         
     }
-    
-    public boolean isOkay() {
-        
-    }
 }
