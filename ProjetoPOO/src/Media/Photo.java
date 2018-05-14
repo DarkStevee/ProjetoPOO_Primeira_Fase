@@ -1,0 +1,29 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Media;
+
+import Exceptions.InvalidInput;
+import java.time.LocalDateTime;
+
+/**
+ *
+ * @author eugenio
+ */
+public class Photo {
+
+    private TypePhoto typePhoto;
+    private LocalDateTime dateTime;
+    private int idRoom;
+
+    public Photo(TypePhoto typePhoto, int idRoom) throws InvalidInput{
+        this.typePhoto = typePhoto;
+        dateTime = LocalDateTime.now();
+        this.idRoom = idRoom;
+    }
+    
+    
+    
+}

@@ -8,7 +8,6 @@ public class AirConditioning extends Actuators{
         on = false;
     }
 
-
     public boolean isACOn() {
         return on;
     }
