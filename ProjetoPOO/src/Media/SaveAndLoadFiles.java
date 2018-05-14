@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public abstract class SaveAndLoad {    
-    void saveVideo(String filename, Video video){
+public abstract class SaveAndLoadFiles {    
+   public void saveVideo(String filename, Video video){
         try {
             FileOutputStream fileOut = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -18,7 +18,7 @@ public abstract class SaveAndLoad {
             var4.getMessage();
         }
     }
-    Video loadVideo(String filename){
+    public Video loadVideo(String filename){
         Video c = null;
         try {
             FileInputStream fileIn = new FileInputStream(filename);
@@ -34,7 +34,7 @@ public abstract class SaveAndLoad {
 
         return c;
     }
-    void savePhoto(String filename, Photo photo){
+   public void savePhoto(String filename, Photo photo){
          try {
             FileOutputStream fileOut = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -44,7 +44,7 @@ public abstract class SaveAndLoad {
             var4.getMessage();
         }
     }
-    Photo loadPhoto(String filename){
+   public Photo loadPhoto(String filename){
         Photo c = null;
         try {
             FileInputStream fileIn = new FileInputStream(filename);

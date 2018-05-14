@@ -8,11 +8,7 @@ package Media;
 import Exceptions.InvalidInput;
 import java.time.LocalDateTime;
 
-/**
- *
- * @author eugenio
- */
-public class Video {
+public class Video{
 
     private LocalDateTime dateTimeBeginRecord;
     private LocalDateTime dateTimeEndRecord;
@@ -23,5 +19,6 @@ public class Video {
         dateTimeEndRecord = dateTimeBeginRecord.plusMinutes(5);
         this.idRoom = idRoom;
     }
+    
 
 }
