@@ -5,7 +5,6 @@
  */
 package Media;
 
-import Exceptions.InvalidInput;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -15,7 +14,7 @@ public class Video implements Serializable{
     private LocalDateTime dateTimeEndRecord;
     private int idRoom;
 
-    public Video(int idRoom) throws InvalidInput {
+    public Video(int idRoom) {
         dateTimeBeginRecord = LocalDateTime.now();
         dateTimeEndRecord = dateTimeBeginRecord.plusMinutes(5);
         this.idRoom = idRoom;

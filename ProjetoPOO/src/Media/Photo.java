@@ -5,7 +5,6 @@
  */
 package Media;
 
-import Exceptions.InvalidInput;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -19,7 +18,7 @@ public class Photo implements Serializable{
     private LocalDateTime dateTime;
     private int idRoom;
 
-    public Photo(TypePhoto typePhoto, int idRoom) throws InvalidInput{
+    public Photo(TypePhoto typePhoto, int idRoom){
         this.typePhoto = typePhoto;
         dateTime = LocalDateTime.now();
         this.idRoom = idRoom;

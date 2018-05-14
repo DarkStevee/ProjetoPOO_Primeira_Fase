@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Actuators;
+package Exceptions;
 
-/**
- *
- * @author AndreLaptop
- */
-public abstract class Actuators {
+public class NotPluggedInException extends Exception {
     
+    public NotPluggedInException(String message) {
+        super(message);
+    }
 }
+

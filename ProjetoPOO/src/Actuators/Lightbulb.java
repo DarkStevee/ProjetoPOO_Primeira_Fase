@@ -1,8 +1,7 @@
 package Actuators;
 
-import Exceptions.InvalidInput;
 
-public class Lightbulb extends Actuators {
+public class Lightbulb extends Actuator {
     private int lightIntensity;
     private boolean onLightBulb;
 
@@ -11,9 +10,9 @@ public class Lightbulb extends Actuators {
         onLightBulb = false;
     }
     
-    void adjustLightIntensity(int lightIntensity)throws InvalidInput{
+    void adjustLightIntensity(int lightIntensity)throws IllegalArgumentException{
         if (lightIntensity < 0 || lightIntensity > 20) {
-            throw new InvalidInput("Light intensity is not valid");
+            throw new IllegalArgumentException("Light intensity is not valid");
         }
         this.lightIntensity = lightIntensity;      
         onLightBulb = (lightIntensity>0);

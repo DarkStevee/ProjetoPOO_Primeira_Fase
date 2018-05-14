@@ -1,7 +1,9 @@
 
 package Program;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class GlobalTime {
@@ -13,6 +15,14 @@ public class GlobalTime {
     }
     
     public static String formattedDate() {
-        return "Data formatada";
+        LocalDate localDate = LocalDate.now();//For reference
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        String formattedString = localDate.format(formatter);
+        
+        return formattedString;
+    }
+    
+    public static void forwardOneMinute() {
+        TIME.plusMinutes(1);
     }
 }

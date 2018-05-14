@@ -35,4 +35,9 @@ public class AlarmControlModule extends Module {
         
     }
 
+    @Override
+    public void act() {
+        
+    }
+
 }

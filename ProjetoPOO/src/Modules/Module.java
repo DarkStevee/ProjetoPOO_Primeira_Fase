@@ -1,10 +1,17 @@
 
 package Modules;
 
+import Program.Room;
+import java.util.ArrayList;
+
 
 public abstract class Module {
 
-    public void act() {
-
+    protected ArrayList<Room> rooms;
+    
+    public Module() {
+        rooms = new ArrayList<>();
     }
+    
+    public abstract void act();
 }

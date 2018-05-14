@@ -1,18 +1,30 @@
 package Actuators;
 
+public class AirConditioning extends Actuator {
 
-public class AirConditioning extends Actuators{
-    private boolean on;//16 e 28
+    private int roomTemperature; // 16 a 28
+    private boolean on;
 
-    public AirConditioning(){
+    public AirConditioning(int roomTemperature) {
+        this.roomTemperature = roomTemperature;
         on = false;
     }
 
-    public boolean isACOn() {
-        return on;
+    public void turnOn() {
+        on = true;
     }
 
-    public void setACOn(boolean on) {
-        this.on = on;
+    public void setTemperature(int temperature) {
+        if (on) {
+            if (temperature >= 16 && temperature <= 28) {
+                this.roomTemperature = temperature;
+            } else {
+                throw new IllegalArgumentException("The temperature is over the capabilities of the ac");
+            }
+        }
+    }
+
+    public int getRoomTemperature() {
+        return roomTemperature;
     }
 }
