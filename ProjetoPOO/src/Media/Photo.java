@@ -6,13 +6,14 @@
 package Media;
 
 import Exceptions.InvalidInput;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  *
  * @author eugenio
  */
-public class Photo {
+public class Photo implements Serializable{
 
     private TypePhoto typePhoto;
     private LocalDateTime dateTime;

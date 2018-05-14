@@ -6,9 +6,10 @@
 package Media;
 
 import Exceptions.InvalidInput;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Video{
+public class Video implements Serializable{
 
     private LocalDateTime dateTimeBeginRecord;
     private LocalDateTime dateTimeEndRecord;

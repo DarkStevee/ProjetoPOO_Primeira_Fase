@@ -6,8 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public abstract class SaveAndLoadFiles {    
+public abstract class SaveAndLoadFiles implements Serializable{    
    public void saveVideo(String filename, Video video){
         try {
             FileOutputStream fileOut = new FileOutputStream(filename);
