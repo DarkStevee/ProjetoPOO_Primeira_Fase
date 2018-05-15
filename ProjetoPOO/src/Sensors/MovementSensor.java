@@ -17,7 +17,7 @@ public class MovementSensor extends Sensor{
     
     public boolean hasMovement() throws MovementSensorNotOnException {
     	if(isOn)
-    		return movement;
+    		return isMovement();
         else throw new MovementSensorNotOnException("Turn movement sensor on first");
     }
     
@@ -31,7 +31,15 @@ public class MovementSensor extends Sensor{
     }
     
     
+    
     public Identifier getIdentifier() {
         return identifier;
+    }
+
+    /**
+     * @return the movement
+     */
+    public boolean isMovement() {
+        return movement;
     }
 }

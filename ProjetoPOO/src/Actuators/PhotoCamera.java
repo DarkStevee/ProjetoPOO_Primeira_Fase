@@ -18,8 +18,8 @@ public class PhotoCamera extends Actuator {
     private boolean flash;
     private TypePhoto photoFormat;
 
-    public PhotoCamera(Room room) {
-        super(room);
+    public PhotoCamera() {
+        super(null);
         flash = false;
     }
 

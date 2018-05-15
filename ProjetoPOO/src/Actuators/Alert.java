@@ -6,10 +6,12 @@ public class Alert extends Actuator {
 
     public int alertVolume;// 0 e 10
 
-    public Alert(Room room) {
-    	super(room);
+    public Alert() {
+        super(null);
         alertVolume = 0;
     }
+    
+   
 
     public void changeVolume(int alertVolume) throws IllegalArgumentException {
         if (alertVolume < 0 || alertVolume > 10) {
