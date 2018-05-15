@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Media;
+package Exceptions;
 
 /**
  *
- * @author eugenio
+ * @author AndreLaptop
  */
-public abstract class Media {
+public class IncorrectPinException extends Exception {
     
+    public IncorrectPinException(String message) {
+        super(message);
+    }
 }

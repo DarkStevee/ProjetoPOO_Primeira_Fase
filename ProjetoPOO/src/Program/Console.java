@@ -1,8 +1,11 @@
 package Program;
 
+import Actuators.Alert;
+import Exceptions.IncorrectPinException;
 import Exceptions.ParedException;
 import Modules.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Console {
 
@@ -10,7 +13,6 @@ public class Console {
 
     private final String clientName;
     private final int clientNumber;
-    private int pin;
 
     private ArrayList<Room> rooms;
     private Wifi wifiConnections;
@@ -18,20 +20,55 @@ public class Console {
     private LightControlModule lcm;
     private TemperatureControlModule tcm;
     private AlarmControlModule acm;
+    
+    private Alert alert;
 
     public Console(String clientName) {
         this.clientName = clientName;
         this.clientNumber = ++clientCounter;
         wifiConnections = new Wifi();
         rooms = new ArrayList<>();
-        
+
         initializeModules(rooms);
-        pin = 1234;
         
+        alert = new Alert(initializePin(1234));
+
         lcm = new LightControlModule(rooms);
         tcm = new TemperatureControlModule(rooms);
-        acm = new AlarmControlModule(pin,rooms);
+        acm = new AlarmControlModule(rooms, alert);
 
+    }
+
+    private char[] initializePin(int number) {
+        char digit[] = new char[4];
+        if (number > 999 && number < 10000) {// a 4 digit number 
+
+            int i = 0;
+            while (number > 0) {
+                digit[i] = (char)(number % 10);
+                number /= 10;
+                i++;
+            }
+        }
+        return digit;
+    }
+    
+    public void setAlertVolume(int volume) {
+        try {
+            alert.changeVolume(volume);
+        }
+        catch(IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void changeActivatedWithPin(char[] pin, boolean change) throws IncorrectPinException {
+        if(Arrays.equals(pin, alert.getPin())) {
+            alert.changeActivated(change);
+        } 
+        else {
+            throw new IncorrectPinException("Incorrect Pin");
+        }
     }
 
     public void initializeModules(ArrayList<Room> roomsToAdd) {

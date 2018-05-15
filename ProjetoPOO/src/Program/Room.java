@@ -25,10 +25,7 @@ public class Room {
 
     private AirConditioning ac;
     private Lightbulb lb;
-    private Alert al;
     private PowerPlug pp;
-    private PhotoCamera pc;
-    private VideoCamera vc;
     //////////////////////////
 
     public Room(int idealTemperature, int interval, int idealLight) {
@@ -39,18 +36,16 @@ public class Room {
         //after it being built, the sensors must be added with sets.
         //the same with the actuators
     }
+    
+    public int getId() {
+        return id;
+    }
 
     public void addActuator(Actuator act) {
         if (act.getClass().equals(AirConditioning.class)) {
             this.ac = (AirConditioning) act;
-        } else if (act.getClass().equals(Alert.class)) {
-            this.al = (Alert) act;
         } else if (act.getClass().equals(Lightbulb.class)) {
             this.lb = (Lightbulb) act;
-        } else if (act.getClass().equals(PhotoCamera.class)) {
-            this.pc = (PhotoCamera) act;
-        } else if (act.getClass().equals(VideoCamera.class)) {
-            this.vc = (VideoCamera) act;
         } else if (act.getClass().equals(PowerPlug.class)) {
             this.pp = (PowerPlug) act;
         }
@@ -75,6 +70,7 @@ public class Room {
         ms.setRoom(this);
         this.ms = ms;
     }
+    
 
     public TemperatureSensor getTemperatureSensor() {
         return ts;
@@ -82,6 +78,14 @@ public class Room {
     
     public LightSensor getLightSensor() {
         return ls;
+    }
+    
+    public OpenDoorSensor getOpenDoorSensor() {
+        return ods;
+    }
+    
+    public MovementSensor getMovementSensor() {
+        return ms;
     }
 
     public AirConditioning getAirConditioning() {

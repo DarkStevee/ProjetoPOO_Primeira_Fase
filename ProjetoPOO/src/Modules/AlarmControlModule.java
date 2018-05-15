@@ -1,62 +1,65 @@
 package Modules;
 
 import Actuators.Alert;
-import Actuators.PhotoCamera;
-import Actuators.VideoCamera;
+import Exceptions.MovementSensorNotOnException;
 import Media.Photo;
 import Media.SaveAndLoadFiles;
 import Media.TypePhoto;
 import Media.Video;
 import Program.Room;
-import Sensors.MovementSensor;
-import Sensors.OpenDoorSensor;
+import java.util.Arrays;
 import java.util.ArrayList;
+
 
 public class AlarmControlModule extends Module {
     
-    private OpenDoorSensor openDoorSensor;
-    private MovementSensor movementSensor;
-    private PhotoCamera photoCamera;
-    private VideoCamera videoCamera;
-    private Alert alarm;
-    private int pin;
+    private Alert alert;
     
-    public AlarmControlModule(int pin, ArrayList<Room> rooms) {
+    public AlarmControlModule(ArrayList<Room> rooms, Alert alert) {
         super(rooms);
-        this.pin = pin;        
+        this.alert = alert;    
     }
     
-    public void intruderDetection() {
-        if (openDoorSensor.getOpenDoor() || movementSensor.isMovement()) {
-            ringAlert();
-          //takeVideo();
-          //takePhoto();
-        }        
+    public boolean intruderDetection(Room room) {
+        try {
+            if ((room.getOpenDoorSensor().getOpenDoor() || room.getMovementSensor().hasMovement()) && alert.getActivated()) {
+                return true;       
+            }
+        } catch (MovementSensorNotOnException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
     }
     
     public void takePhoto(TypePhoto typePhoto, int idRoom) {
         Photo photo = new Photo(typePhoto, idRoom);
-        photoCamera.savePhoto("", photo);
+        SaveAndLoadFiles.savePhoto("photo", photo);
     }
     
     public void takeVideo(int idRoom) {
         Video video = new Video(idRoom);
-        SaveAndLoadFiles.saveVideo("", video);
+        SaveAndLoadFiles.saveVideo("video", video);
     }
     
     public void ringAlert() {
-        alarm.changeVolume(10);
+        alert.changeVolume(10);
     }
     
-    public void deactivateAlarm(int pin) {
-        if (this.pin == pin) {
-            alarm.changeVolume(0);
+    public void setAlert(char[] pin, Room room) {
+        if (Arrays.equals(pin, alert.getPin())) {
+            alert.changeVolume(0);
         }
     }
     
     @Override
     public void act() {
-        
+        for(Room r : rooms) {
+            if(intruderDetection(r)) {
+                ringAlert();
+                takeVideo(r.getId());
+                takePhoto(TypePhoto.HORIZONTAL, r.getId()); 
+            }
+        }
     }
     
 }
