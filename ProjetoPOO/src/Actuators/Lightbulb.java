@@ -14,13 +14,13 @@ public class Lightbulb extends Actuator {
         onLightBulb = false;
     }
 
-    public void adjustLightIntensity(int lightIntensity) throws IllegalArgumentException {
+    /*public void adjustLightIntensity(int lightIntensity) throws IllegalArgumentException {
         if (lightIntensity < 0 || lightIntensity > 20) {
             throw new IllegalArgumentException("Light intensity is not valid");
         }
         this.lightIntensity = lightIntensity;
         onLightBulb = (lightIntensity > 0);
-    }
+    }*/
 
     public void setLightIntensity(int lightIntensity) throws LightIntensityOutOfRangeException {
         if (lightIntensity >= 0 && lightIntensity <= 20) {

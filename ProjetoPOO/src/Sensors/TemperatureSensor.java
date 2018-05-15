@@ -1,8 +1,8 @@
 package Sensors;
 
-import Actuators.AirConditioning;
 import Actuators.PowerPlug;
 import Exceptions.NotPluggedInException;
+import Program.Room;
 
 public class TemperatureSensor extends Sensor {
 
@@ -11,7 +11,8 @@ public class TemperatureSensor extends Sensor {
   //  private int temperatureInterval;
   //  private int idealTemperature;
 
-    public TemperatureSensor(PowerPlug plug, int temperature) {
+    public TemperatureSensor(PowerPlug plug, int temperature, Room room) {
+        super(room);
         this.plug = plug;
         this.temperature = temperature;
    //     this.temperatureInterval = temperatureInterval;

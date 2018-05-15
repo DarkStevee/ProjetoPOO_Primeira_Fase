@@ -11,7 +11,6 @@ public class PowerPlug extends Actuator {
     private Identifier plugId;
     private boolean on;
     private LocalTime internalTime;
-    private Room room;
     
     private TemperatureSensor ts;  //unico pode estar ligado a tomada
 

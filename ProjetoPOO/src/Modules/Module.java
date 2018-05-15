@@ -9,13 +9,10 @@ public abstract class Module {
 
     protected ArrayList<Room> rooms;
     
-    public Module() {
-        rooms = new ArrayList<>();
+    public Module(ArrayList<Room> consoleRoom) {
+        rooms = consoleRoom;
     }
 
-	/**
-	 * 
-	 */
 	public abstract void act();
     
 }

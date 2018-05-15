@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public abstract class SaveAndLoadFiles implements Serializable{    
-   public void saveVideo(String filename, Video video){
+   public static void saveVideo(String filename, Video video){
         try {
             FileOutputStream fileOut = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -19,7 +19,7 @@ public abstract class SaveAndLoadFiles implements Serializable{
             var4.getMessage();
         }
     }
-    public Video loadVideo(String filename){
+    public static Video loadVideo(String filename){
         Video c = null;
         try {
             FileInputStream fileIn = new FileInputStream(filename);
@@ -35,7 +35,7 @@ public abstract class SaveAndLoadFiles implements Serializable{
 
         return c;
     }
-   public void savePhoto(String filename, Photo photo){
+   public static void savePhoto(String filename, Photo photo){
          try {
             FileOutputStream fileOut = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -45,7 +45,7 @@ public abstract class SaveAndLoadFiles implements Serializable{
             var4.getMessage();
         }
     }
-   public Photo loadPhoto(String filename){
+   public static Photo loadPhoto(String filename){
         Photo c = null;
         try {
             FileInputStream fileIn = new FileInputStream(filename);

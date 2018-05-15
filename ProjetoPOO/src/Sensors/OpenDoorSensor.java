@@ -1,11 +1,14 @@
 package Sensors;
 
+import Program.Room;
+
 
 public class OpenDoorSensor extends Sensor{
     
     private boolean openDoor;
     
-    public OpenDoorSensor() {
+    public OpenDoorSensor(Room room) {
+        super(room);
         openDoor = false;
     }
     

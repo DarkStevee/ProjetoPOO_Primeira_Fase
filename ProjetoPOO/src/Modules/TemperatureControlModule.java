@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class TemperatureControlModule extends Module {
 
-    public TemperatureControlModule() {
-        super();
+    public TemperatureControlModule(ArrayList<Room> rooms) {
+        super(rooms);
     }
 
     public void addRooms(ArrayList<Room> rooms) {
@@ -23,13 +23,13 @@ public class TemperatureControlModule extends Module {
             AirConditioning ac = r.getAirConditioning();
 
             if (ts != null && ac != null) {
-                int initialTemp = r.getIdealTemperature();
+                int idealTemp = r.getIdealTemperature();
                 int intv = r.getInterval();
                 int curTemp;
                 try {
                     curTemp = r.getCurrentTemperature();
-                    if (curTemp > intv + initialTemp || curTemp < initialTemp - intv) {
-                        r.setTemperature(curTemp);
+                    if (curTemp > intv + idealTemp || curTemp < idealTemp - intv) {
+                        r.setTemperature(r.getIdealTemperature());
                     }
                 } catch (NotPluggedInException ex) {
                     System.out.println(ex.getMessage());

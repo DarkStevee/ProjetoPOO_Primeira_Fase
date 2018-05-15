@@ -12,11 +12,19 @@ import Program.Room;
  * @author AndreLaptop
  */
 public abstract class Actuator {
-	
-	protected Room room;
-	
-	public Actuator(Room room) {
-		this.room = room;
-	}
+
+    protected Room room;
+
+    public Actuator(Room room) {
+        this.room = room;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 
 }

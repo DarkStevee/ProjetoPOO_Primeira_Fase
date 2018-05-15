@@ -1,12 +1,15 @@
 package Sensors;
 
+import Program.Room;
+
 
 public class LightSensor extends Sensor {
     
     
     private int light; //0 a 100%
     
-    public LightSensor(int initialLight) {
+    public LightSensor(int initialLight, Room room) {
+        super(room);
         light = initialLight;
     }
     

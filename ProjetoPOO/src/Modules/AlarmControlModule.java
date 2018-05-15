@@ -4,10 +4,13 @@ import Actuators.Alert;
 import Actuators.PhotoCamera;
 import Actuators.VideoCamera;
 import Media.Photo;
+import Media.SaveAndLoadFiles;
 import Media.TypePhoto;
 import Media.Video;
+import Program.Room;
 import Sensors.MovementSensor;
 import Sensors.OpenDoorSensor;
+import java.util.ArrayList;
 
 public class AlarmControlModule extends Module {
     
@@ -18,17 +21,9 @@ public class AlarmControlModule extends Module {
     private Alert alarm;
     private int pin;
     
-    public AlarmControlModule(int pin) {
-        openDoorSensor = new OpenDoorSensor();
-        movementSensor = new MovementSensor();
-        photoCamera = new PhotoCamera();
-        videoCamera = new VideoCamera();
-        alarm = new Alert();
+    public AlarmControlModule(int pin, ArrayList<Room> rooms) {
+        super(rooms);
         this.pin = pin;        
-    }
-
-    public AlarmControlModule() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void intruderDetection() {
@@ -46,7 +41,7 @@ public class AlarmControlModule extends Module {
     
     public void takeVideo(int idRoom) {
         Video video = new Video(idRoom);
-        videoCamera.saveVideo("", video);
+        SaveAndLoadFiles.saveVideo("", video);
     }
     
     public void ringAlert() {

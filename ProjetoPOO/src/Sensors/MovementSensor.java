@@ -2,6 +2,7 @@ package Sensors;
 
 import Exceptions.MovementSensorNotOnException;
 import Program.Identifier;
+import Program.Room;
 
 public class MovementSensor extends Sensor{
     
@@ -9,7 +10,8 @@ public class MovementSensor extends Sensor{
     private boolean isOn;
     private boolean movement;
     
-    public MovementSensor() {
+    public MovementSensor(Room room) {
+        super(room);
         identifier = new Identifier("Movement Sensor");
         movement = false;
         isOn = false;

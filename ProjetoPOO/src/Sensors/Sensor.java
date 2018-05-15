@@ -5,10 +5,25 @@
  */
 package Sensors;
 
+import Program.Room;
+
 /**
  *
  * @author AndreLaptop
  */
 public abstract class Sensor {
+    protected Room room;
+    
+    public Sensor(Room room) {
+        this.room = room;
+    }
+    
+    public Room getRoom() {
+        return room;
+    }
+    
+    public void setRoom(Room room) {
+        this.room = room;
+    }
     
 }

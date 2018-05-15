@@ -2,7 +2,7 @@ package Program;
 
 import Exceptions.ParedException;
 import Modules.*;
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class Console {
 
@@ -10,8 +10,9 @@ public class Console {
 
     private final String clientName;
     private final int clientNumber;
+    private int pin;
 
-    private HashSet<Room> rooms;
+    private ArrayList<Room> rooms;
     private Wifi wifiConnections;
 
     private LightControlModule lcm;
@@ -22,16 +23,19 @@ public class Console {
         this.clientName = clientName;
         this.clientNumber = ++clientCounter;
         wifiConnections = new Wifi();
-        rooms = new HashSet<>();
+        rooms = new ArrayList<>();
+        
+        initializeModules(rooms);
+        pin = 1234;
+        
+        lcm = new LightControlModule(rooms);
+        tcm = new TemperatureControlModule(rooms);
+        acm = new AlarmControlModule(pin,rooms);
 
-        lcm = new LightControlModule();
-        tcm = new TemperatureControlModule();
-        acm = new AlarmControlModule();
-        initializeModules();
     }
 
-    public void initializeModules() {
-        //fazer.
+    public void initializeModules(ArrayList<Room> roomsToAdd) {
+        this.rooms = roomsToAdd;
     }
 
     public void addRoom(Room room) {
