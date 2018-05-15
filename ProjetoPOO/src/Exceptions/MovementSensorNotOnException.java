@@ -1,7 +1,9 @@
 package Exceptions;
-
+//************************
 /**
- * @author 
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe 
  *
  */
 

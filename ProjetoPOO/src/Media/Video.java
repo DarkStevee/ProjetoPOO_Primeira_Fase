@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Media;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Video implements Serializable{
+/**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe Video responsavel por guardar as informações dos videos
+ * gravados.
+ *
+ */
+public class Video implements Serializable {
 
     private LocalDateTime dateTimeBeginRecord;
     private LocalDateTime dateTimeEndRecord;
@@ -19,6 +21,13 @@ public class Video implements Serializable{
         dateTimeEndRecord = dateTimeBeginRecord.plusMinutes(5);
         this.idRoom = idRoom;
     }
-    
+
+    public LocalDateTime getDateTimeBeginRecord() {
+        return dateTimeBeginRecord;
+    }
+
+    public LocalDateTime getDateTimeEndRecord() {
+        return dateTimeEndRecord;
+    }
 
 }

@@ -6,6 +6,12 @@ import Program.Room;
 import Sensors.TemperatureSensor;
 import java.util.ArrayList;
 
+/**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe do modulo de controlo da temperatura
+ *
+ */
 public class TemperatureControlModule extends Module {
 
     public TemperatureControlModule(ArrayList<Room> rooms) {
@@ -16,6 +22,9 @@ public class TemperatureControlModule extends Module {
         this.rooms.addAll(rooms);
     }
 
+     /**
+     * Metodo de acionamento de todos os metodos da classe
+     */
     @Override
     public void act() {
         for (Room r : rooms) {
@@ -37,20 +46,5 @@ public class TemperatureControlModule extends Module {
                 // alterar temperatura quarto e sensor
             }
         }
-
-        /*
-          for(Sensor s : r.getSensors()) {
-              if(!s.isOkay()) {
-                  if(s.getClass().equals(TemperatureSensor.class)) {
-                      TemperatureSensor sensor = (TemperatureSensor) s;
-                      for(Actuator a : r.getActuators()) {
-                          if(a.getClass().equals(AirConditioning.class)) {
-                              sensor.setTemperature((AirConditioning) a);
-                          }
-                      }
-                  }  
-              }
-          }*/
     }
-
 }

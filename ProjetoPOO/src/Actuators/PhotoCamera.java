@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actuators;
 
 import Media.Photo;
@@ -10,8 +5,11 @@ import Program.Room;
 import Media.TypePhoto;
 
 /**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe Camara fotografica que extend a classe de Atuadores
+ * Classe responsavel por tirar fotos das divisões
  *
- * @author eugenio
  */
 public class PhotoCamera extends Actuator {
 
@@ -30,6 +28,12 @@ public class PhotoCamera extends Actuator {
         flash = false;
     }
 
+    /**
+     * Metodo para persistencia de fotos.
+     *
+     * @param name - nome do ficheiro que ira ser salvo
+     * @param photo - objeto que sera persistido
+     */
     public void savePhoto(String name, Photo photo) {
 
     }

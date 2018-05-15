@@ -3,7 +3,13 @@ package Sensors;
 import Exceptions.MovementSensorNotOnException;
 import Program.Identifier;
 import Program.Room;
-
+/**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe responsavel pelo Sensor de movimento, extent a classe
+ * Sensor
+ *
+ */
 public class MovementSensor extends Sensor{
     
     private final Identifier identifier;
@@ -16,7 +22,11 @@ public class MovementSensor extends Sensor{
         movement = false;
         isOn = false;
     }  
-    
+    /**
+     * Metodo de verificação se na divisão há movimento
+     * @return
+     * @throws MovementSensorNotOnException 
+     */
     public boolean hasMovement() throws MovementSensorNotOnException {
     	if(isOn)
     		return movement;

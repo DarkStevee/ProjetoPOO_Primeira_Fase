@@ -6,18 +6,21 @@ import Exceptions.MovementSensorNotOnException;
 import Exceptions.NotPluggedInException;
 import Sensors.*;
 
+/**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe Room, representa as divisões, onde em cada divisão,
+ * teremos nela os sensores e atuadores
+ *
+ */
 public class Room {
 
     private static int count;
-
     private final int id;
-
-    ////////////////////////
     private int interval;
-    
     private final int idealLight;
     private final int idealTemperature;
-    //initialize on console 
+
     private TemperatureSensor ts;
     private LightSensor ls;
     private OpenDoorSensor ods;
@@ -26,7 +29,6 @@ public class Room {
     private AirConditioning ac;
     private Lightbulb lb;
     private PowerPlug pp;
-    //////////////////////////
 
     public Room(int idealTemperature, int interval, int idealLight) {
         id = ++count;
@@ -36,11 +38,16 @@ public class Room {
         //after it being built, the sensors must be added with sets.
         //the same with the actuators
     }
-    
+
     public int getId() {
         return id;
     }
 
+    /**
+     * Metodo que adiciona um novo atuador
+     *
+     * @param act
+     */
     public void addActuator(Actuator act) {
         if (act.getClass().equals(AirConditioning.class)) {
             this.ac = (AirConditioning) act;
@@ -48,6 +55,21 @@ public class Room {
             this.lb = (Lightbulb) act;
         } else if (act.getClass().equals(PowerPlug.class)) {
             this.pp = (PowerPlug) act;
+        }
+    }
+
+    public void setLightIntensity(int lightIntensity) throws LightIntensityOutOfRangeException {
+        if (lb != null) {
+            lb.setLightIntensity(lightIntensity);
+            //this.luminosity = (lightIntensity * 100) / 20; //recebe luminosity de 0-10 converte para a escala 0-100
+            ls.setLight((lightIntensity * 100) / 20);
+        }
+    }
+
+    public void setTemperature(int temperature) {
+        if (ac != null) {
+            ac.setTemperature(temperature); // check if temperature can be changed to this value, if not throws an exception
+            ts.setTemperature(temperature);
         }
     }
 
@@ -70,20 +92,19 @@ public class Room {
         ms.setRoom(this);
         this.ms = ms;
     }
-    
 
     public TemperatureSensor getTemperatureSensor() {
         return ts;
     }
-    
+
     public LightSensor getLightSensor() {
         return ls;
     }
-    
+
     public OpenDoorSensor getOpenDoorSensor() {
         return ods;
     }
-    
+
     public MovementSensor getMovementSensor() {
         return ms;
     }
@@ -91,11 +112,11 @@ public class Room {
     public AirConditioning getAirConditioning() {
         return ac;
     }
-    
+
     public Lightbulb getLightbulb() {
         return lb;
     }
-    
+
     public PowerPlug getPowerPlug() {
         return pp;
     }
@@ -119,7 +140,7 @@ public class Room {
     public int getIdealTemperature() {
         return idealTemperature;
     }
-    
+
     public int getIdealLight() {
         return idealLight;
     }
@@ -143,21 +164,6 @@ public class Room {
             return ms.hasMovement();
         }
         return true; //placeholder same
-    }
-
-    public void setLightIntensity(int lightIntensity) throws LightIntensityOutOfRangeException {
-        if (lb != null) {
-            lb.setLightIntensity(lightIntensity);
-            //this.luminosity = (lightIntensity * 100) / 20; //recebe luminosity de 0-10 converte para a escala 0-100
-            ls.setLight((lightIntensity * 100) / 20);
-        }
-    }
-
-    public void setTemperature(int temperature) {
-        if (ac != null) {
-            ac.setTemperature(temperature); // check if temperature can be changed to this value, if not throws an exception
-            ts.setTemperature(temperature);
-        }
     }
 
     @Override

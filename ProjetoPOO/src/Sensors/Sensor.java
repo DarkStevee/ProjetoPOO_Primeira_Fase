@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Sensors;
 
 import Program.Room;
 
 /**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe abstrata Sensor, classe base para os outros sensores
  *
- * @author AndreLaptop
  */
 public abstract class Sensor {
     protected Room room;

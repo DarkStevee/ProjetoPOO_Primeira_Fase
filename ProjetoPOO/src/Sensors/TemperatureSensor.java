@@ -4,19 +4,23 @@ import Actuators.PowerPlug;
 import Exceptions.NotPluggedInException;
 import Program.Room;
 
+/**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe responsavel pelo Sensor de temperatura, extent a classe
+ * Sensor
+ *
+ */
 public class TemperatureSensor extends Sensor {
 
     private int temperature;
     private PowerPlug plug;
-  //  private int temperatureInterval;
-  //  private int idealTemperature;
+
 
     public TemperatureSensor(PowerPlug plug, int temperature, Room room) {
         super(room);
         this.plug = plug;
         this.temperature = temperature;
-   //     this.temperatureInterval = temperatureInterval;
-   //     this.idealTemperature = idealTemperature;
     }
     
     public int getTemperature() throws NotPluggedInException {

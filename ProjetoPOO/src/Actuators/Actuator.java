@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actuators;
 
 import Program.Room;
 
 /**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe abstrata padrão para base dos atuadores.
  *
- * @author AndreLaptop
  */
 public abstract class Actuator {
 
