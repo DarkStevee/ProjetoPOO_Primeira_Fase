@@ -9,8 +9,7 @@ import Program.Room;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe Video camera que extend a classe de Atuadores Classe
- * responsavel por tirar fotos e fazer gravações das divisões
+ * @version 1.00 Classe Video camera que extend a classe de Atuadores Classe responsavel por tirar fotos e fazer gravações das divisões
  *
  */
 public class VideoCamera extends Actuator {
@@ -18,8 +17,8 @@ public class VideoCamera extends Actuator {
     private final int RECORD = 5; //5 segundos
     private boolean flash;
 
-    public VideoCamera(Room room) {
-        super(room);
+    public VideoCamera() {
+        super(null);
         flash = false;
     }
 

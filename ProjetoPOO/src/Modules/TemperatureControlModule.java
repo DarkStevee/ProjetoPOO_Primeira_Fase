@@ -2,6 +2,7 @@ package Modules;
 
 import Actuators.AirConditioning;
 import Exceptions.NotPluggedInException;
+import Exceptions.SensorNotImplomentedException;
 import Program.Room;
 import Sensors.TemperatureSensor;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class TemperatureControlModule extends Module {
         this.rooms.addAll(rooms);
     }
 
-     /**
+    /**
      * Metodo de acionamento de todos os metodos da classe
      */
     @Override
@@ -36,9 +37,13 @@ public class TemperatureControlModule extends Module {
                 int intv = r.getInterval();
                 int curTemp;
                 try {
-                    curTemp = r.getCurrentTemperature();
-                    if (curTemp > intv + idealTemp || curTemp < idealTemp - intv) {
-                        r.setTemperature(r.getIdealTemperature());
+                    try {
+                        curTemp = r.getCurrentTemperature();
+                        if (curTemp > intv + idealTemp || curTemp < idealTemp - intv) {
+                            r.setTemperature(r.getIdealTemperature());
+                        }
+                    } catch (SensorNotImplomentedException ex) {
+                        System.out.println(ex.getMessage());
                     }
                 } catch (NotPluggedInException ex) {
                     System.out.println(ex.getMessage());

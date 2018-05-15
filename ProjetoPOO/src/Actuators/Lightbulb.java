@@ -6,8 +6,7 @@ import Program.Room;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe Lampada extend a classe de Atuadores Classe responsavel
- * pela ativação/desativação das lampadas das divisões
+ * @version 1.00 Classe Lampada extend a classe de Atuadores Classe responsavel pela ativação/desativação das lampadas das divisões
  *
  */
 public class Lightbulb extends Actuator {

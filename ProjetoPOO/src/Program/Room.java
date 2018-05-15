@@ -4,13 +4,13 @@ import Actuators.*;
 import Exceptions.LightIntensityOutOfRangeException;
 import Exceptions.MovementSensorNotOnException;
 import Exceptions.NotPluggedInException;
+import Exceptions.SensorNotImplomentedException;
 import Sensors.*;
 
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe Room, representa as divisões, onde em cada divisão,
- * teremos nela os sensores e atuadores
+ * @version 1.00 Classe Room, representa as divisões, onde em cada divisão, teremos nela os sensores e atuadores
  *
  */
 public class Room {
@@ -43,19 +43,16 @@ public class Room {
         return id;
     }
 
-    /**
-     * Metodo que adiciona um novo atuador
-     *
-     * @param act
-     */
-    public void addActuator(Actuator act) {
-        if (act.getClass().equals(AirConditioning.class)) {
-            this.ac = (AirConditioning) act;
-        } else if (act.getClass().equals(Lightbulb.class)) {
-            this.lb = (Lightbulb) act;
-        } else if (act.getClass().equals(PowerPlug.class)) {
-            this.pp = (PowerPlug) act;
-        }
+    public void addAcToRoom(AirConditioning ac) {
+        this.ac = ac;
+    }
+
+    public void addLightbulbToRoom(Lightbulb bulb) {
+        this.lb = bulb;
+    }
+
+    public void addPowerPlugToRoom(PowerPlug plug) {
+        this.pp = plug;
     }
 
     public void setLightIntensity(int lightIntensity) throws LightIntensityOutOfRangeException {
@@ -132,9 +129,12 @@ public class Room {
         this.interval = interval;
     }
 
-    public int getCurrentTemperature() throws NotPluggedInException {
-        //	if (ts!= null)
-        return ts.getTemperature();
+    public int getCurrentTemperature() throws NotPluggedInException, SensorNotImplomentedException {
+        if (ts == null) {
+            throw new SensorNotImplomentedException("luminosity sensor is not implomented");
+        } else {
+            return ts.getTemperature();
+        }
     }
 
     public int getIdealTemperature() {
@@ -145,25 +145,28 @@ public class Room {
         return idealLight;
     }
 
-    public int getCurrentLuminosity() {
-        if (ls != null) {
+    public int getCurrentLuminosity() throws SensorNotImplomentedException {
+        if (ls == null) {
+            throw new SensorNotImplomentedException("luminosity sensor is not implomented");
+        } else {
             return ls.getLight();
         }
-        return 1; // placeholder exception this sensor is null.
     }
 
-    public boolean isDoorOpen() {
-        if (ods != null) {
+    public boolean isDoorOpen() throws SensorNotImplomentedException {
+        if (ods == null) {
+            throw new SensorNotImplomentedException("open door sensor is not implomented");
+        } else {
             return ods.getOpenDoor();
         }
-        return true; //placeholder same exception
     }
 
-    public boolean hasMovement() throws MovementSensorNotOnException {
-        if (ms != null) {
+    public boolean hasMovement() throws MovementSensorNotOnException, SensorNotImplomentedException {
+        if (ms == null) {
+            throw new SensorNotImplomentedException("movement sensor is not implomented");
+        } else {
             return ms.hasMovement();
         }
-        return true; //placeholder same
     }
 
     @Override

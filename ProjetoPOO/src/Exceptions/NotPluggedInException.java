@@ -1,4 +1,3 @@
-
 package Exceptions;
 
 /**
@@ -8,9 +7,8 @@ package Exceptions;
  *
  */
 public class NotPluggedInException extends Exception {
-    
+
     public NotPluggedInException(String message) {
         super(message);
     }
 }
-

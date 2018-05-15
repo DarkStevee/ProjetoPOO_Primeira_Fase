@@ -7,8 +7,7 @@ import Media.TypePhoto;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe Camara fotografica que extend a classe de Atuadores
- * Classe responsavel por tirar fotos das divisões
+ * @version 1.00 Classe Camara fotografica que extend a classe de Atuadores Classe responsavel por tirar fotos das divisões
  *
  */
 public class PhotoCamera extends Actuator {

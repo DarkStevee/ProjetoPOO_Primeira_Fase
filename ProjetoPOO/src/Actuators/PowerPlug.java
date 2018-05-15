@@ -8,8 +8,7 @@ import java.time.LocalTime;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe tomada que extend a classe de Atuadores Classe
- * responsavel por ligar e temporizar atuadores
+ * @version 1.00 Classe tomada que extend a classe de Atuadores Classe responsavel por ligar e temporizar atuadores
  *
  */
 public class PowerPlug extends Actuator {
@@ -18,7 +17,7 @@ public class PowerPlug extends Actuator {
     private boolean on;
     private LocalTime internalTime;
 
-    private TemperatureSensor tempSensor;  
+    private TemperatureSensor tempSensor;
 
     public PowerPlug(Room room) {
         super(room);
@@ -56,7 +55,7 @@ public class PowerPlug extends Actuator {
     /**
      * Temporizador da tomada para desligamento
      *
-     * @param minutes 
+     * @param minutes
      */
     public void turnOffAfterMinutes(long minutes) {
         if (minutes > 0 && internalTime == null) {

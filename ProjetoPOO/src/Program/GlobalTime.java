@@ -1,4 +1,3 @@
-
 package Program;
 
 import java.time.LocalDate;
@@ -11,25 +10,27 @@ import java.time.format.DateTimeFormatter;
  * @version 1.00 Classe GlobalTime, classe unica que gera uma tempo para ser usado como base
  *
  */
-
 public class GlobalTime {
+
     public static final LocalTime TIME = LocalTime.now();
-    
-    
+
     public static LocalTime getInstance() {
         return TIME;
     }
+
     /**
      * Metodo para formatar a hora e retornar-la como String
+     *
      * @return - String do localDate
      */
     public static String formattedDate() {
         LocalDate localDate = LocalDate.now();//For reference
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         String formattedString = localDate.format(formatter);
-        
+
         return formattedString;
     }
+
     /**
      * Metodo para se adiantar o tempo em 1 minuto
      */

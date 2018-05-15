@@ -5,11 +5,9 @@ import Program.Room;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe responsavel pelo Sensor de iluminação, extent a classe
- * Sensor
+ * @version 1.00 Classe responsavel pelo Sensor de iluminação, extent a classe Sensor
  *
  */
-
 public class LightSensor extends Sensor {
 
     private int light; //0 a 100%

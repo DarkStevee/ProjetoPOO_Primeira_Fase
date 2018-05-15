@@ -1,8 +1,12 @@
 package Program;
 
 import Actuators.Alert;
+import Actuators.PowerPlug;
 import Exceptions.IncorrectPinException;
+import Exceptions.LightIntensityOutOfRangeException;
+import Exceptions.NotPluggedInException;
 import Exceptions.ParedException;
+import Exceptions.SensorNotImplomentedException;
 import Modules.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,17 +31,19 @@ public class Console {
 
     /**
      * Construtor que inicializa todos dos modulos
-     * @param clientName 
+     *
+     * @param clientName
+     * @param wifi
+     * @param alert
+     * @param roomstoAdd
      */
-    public Console(String clientName) {
+    public Console(String clientName, Wifi wifi, Alert alert, ArrayList<Room> roomstoAdd) {
         this.clientName = clientName;
         this.clientNumber = ++clientCounter;
-        wifiConnections = new Wifi();
-        rooms = new ArrayList<>();
+        wifiConnections = wifi;
+        rooms = roomstoAdd;
 
-        initializeModules(rooms);
-
-        alert = new Alert(initializePin(1234));
+        this.alert = alert;
 
         lcm = new LightControlModule(rooms);
         tcm = new TemperatureControlModule(rooms);
@@ -45,26 +51,40 @@ public class Console {
 
     }
 
-    /**
-     * Metodo que inicializa o Pin
-     * @param number - senha que sera persistida no pin
-     * @return - pin
-     */
-    private char[] initializePin(int number) {
-        char digit[] = new char[4];
-        if (number > 999 && number < 10000) {// a 4 digit number 
-
-            int i = 0;
-            while (number > 0) {
-                digit[i] = (char) (number % 10);
-                number /= 10;
-                i++;
+    public void setStateOfPlugOfRoom(Room room, boolean state) throws NotPluggedInException, IllegalArgumentException { //liga ou desliga a plug e todos os que estiverem com ela
+        // acedida pela sala, room.getPowerPlug()
+        if (room != null) {
+            PowerPlug plug = room.getPowerPlug();
+            if (plug != null) {
+                plug.changeState(state);
+            } else {
+                throw new NotPluggedInException("This plug doesnt exist");
             }
+        } else {
+            throw new IllegalArgumentException("This room doesnt exist");
         }
-        return digit;
     }
 
-    public void setAlertVolume(int volume) {
+    public void setACOfRoom(Room room, boolean state) throws IllegalArgumentException {
+        if (room == null) {
+            throw new IllegalArgumentException("This room doesnt exist");
+        }
+        room.getAirConditioning().turnOnOrOff(state);
+    }
+
+    public void setLightOfRoom(Room room, int intensity) { //aceder à lampada de uma certa sala pela consola
+        for (Room r : rooms) {
+            if (r.equals(room)) {
+                try {
+                    r.setLightIntensity(intensity);
+                } catch (LightIntensityOutOfRangeException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+    }
+
+    public void setAlertVolume(int volume) { //muda o volume do alarme da casa para o que o utilizador por
         try {
             alert.changeVolume(volume);
         } catch (IllegalArgumentException ex) {
@@ -74,11 +94,12 @@ public class Console {
 
     /**
      * Metodo que permite desativar a sirene caso o pin seja correctamente digitado
+     *
      * @param pin - senha para validação
      * @param change
-     * @throws IncorrectPinException 
+     * @throws IncorrectPinException
      */
-    public void changeActivatedWithPin(char[] pin, boolean change) throws IncorrectPinException {
+    public void changeActivatedWithPin(char[] pin, boolean change) throws IncorrectPinException { //terá que fornecer o pin correto e depois consegue mudar
         if (Arrays.equals(pin, alert.getPin())) {
             alert.changeActivated(change);
         } else {
@@ -86,13 +107,10 @@ public class Console {
         }
     }
 
-    public void initializeModules(ArrayList<Room> roomsToAdd) {
-        this.rooms = roomsToAdd;
-    }
-
     /**
      * Metodo para adicionar uma divisao ao array de divisoes
-     * @param room 
+     *
+     * @param room
      */
     public void addRoom(Room room) {
         try {
@@ -104,14 +122,20 @@ public class Console {
 
     /**
      * Metodo que adiciona um par de indentificadores ao wifi
+     *
      * @param identifier1
-     * @param identifer2 
+     * @param identifer2
+     * @param password
      */
-    public void addConnection(Identifier identifier1, Identifier identifer2) {
-        try {
-            wifiConnections.addConnection(identifier1, identifer2);
-        } catch (NullPointerException | ParedException ex) {
-            System.out.println(ex.getMessage());
+    public void addConnection(Identifier identifier1, Identifier identifer2, String password) throws IllegalArgumentException {
+        if (password.equals(wifiConnections.getPassword())) {
+            try {
+                wifiConnections.addConnection(identifier1, identifer2);
+            } catch (NullPointerException | ParedException ex) {
+                System.out.println(ex.getMessage());
+            }
+        } else {
+            throw new IllegalArgumentException("The password isnt correct");
         }
     }
 
@@ -119,12 +143,19 @@ public class Console {
     public String toString() {
         return "Nome: " + clientName + " id: " + clientNumber;
     }
+
     /**
      * Metodo de acionamento de todos os metodos da classe
+     *
+     * @throws Exceptions.SensorNotImplomentedException
      */
-    public void act() {
-        lcm.act();
-        tcm.act();
-        acm.act();
+    public void act() throws SensorNotImplomentedException {
+        if (lcm != null && tcm != null && acm != null) {
+            lcm.act();
+            tcm.act();
+            acm.act();
+        } else {
+            throw new SensorNotImplomentedException("A sensor is not implomented");
+        }
     }
 }

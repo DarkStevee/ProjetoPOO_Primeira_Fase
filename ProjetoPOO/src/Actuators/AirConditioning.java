@@ -27,9 +27,11 @@ public class AirConditioning extends Actuator {
 
     /**
      * Metodo responsavel pelo acionamento do aparelho
+     *
+     * @param state
      */
-    public void turnOn() {
-        on = true;
+    public void turnOnOrOff(boolean state) {
+        on = state;
     }
 
     /**

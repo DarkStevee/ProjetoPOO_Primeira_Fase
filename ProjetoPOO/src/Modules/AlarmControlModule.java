@@ -23,8 +23,7 @@ public class AlarmControlModule extends Module {
     }
 
     /**
-     * Metodo reponsavel pela detecção de um intruso com retorno boolean caso
-     * haja um intruso
+     * Metodo reponsavel pela detecção de um intruso com retorno boolean caso haja um intruso
      *
      * @param room
      * @return

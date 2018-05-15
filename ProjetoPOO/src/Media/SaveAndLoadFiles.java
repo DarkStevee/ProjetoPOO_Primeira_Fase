@@ -56,8 +56,7 @@ public abstract class SaveAndLoadFiles implements Serializable {
     }
 
     /**
-     * Metodo responsavel por salvar as photos tiradas pelas cameras de fotos e
-     * video cameras
+     * Metodo responsavel por salvar as photos tiradas pelas cameras de fotos e video cameras
      *
      * @param filename - nome do arquivo que sera salvo
      * @param photo - objeto que sera persistido

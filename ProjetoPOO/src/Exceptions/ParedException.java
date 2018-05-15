@@ -1,6 +1,6 @@
-
 package Exceptions;
 //***************
+
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
@@ -8,7 +8,7 @@ package Exceptions;
  *
  */
 public class ParedException extends Exception {
-    
+
     public ParedException(String message) {
         super(message);
     }

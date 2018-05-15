@@ -6,8 +6,7 @@ import java.util.ArrayList;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe abstrata Modulo que tera as informações importantes para
- * todos os outros modulos
+ * @version 1.00 Classe abstrata Modulo que tera as informações importantes para todos os outros modulos
  *
  */
 public abstract class Module {

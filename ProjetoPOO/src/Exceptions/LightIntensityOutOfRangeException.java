@@ -1,4 +1,5 @@
 package Exceptions;
+
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
@@ -7,7 +8,7 @@ package Exceptions;
  */
 public class LightIntensityOutOfRangeException extends Exception {
 
-	public LightIntensityOutOfRangeException(String message) {
-		super(message);
-	}
+    public LightIntensityOutOfRangeException(String message) {
+        super(message);
+    }
 }

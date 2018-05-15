@@ -3,8 +3,7 @@ package Actuators;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe Alerta que extend a classe de Atuadores Classe
- * responsavel pela ativação/desativação da sirene
+ * @version 1.00 Classe Alerta que extend a classe de Atuadores Classe responsavel pela ativação/desativação da sirene
  *
  */
 public class Alert extends Actuator {
@@ -13,11 +12,31 @@ public class Alert extends Actuator {
     private boolean activated;
     private char[] pin;
 
-    public Alert(char[] pin) {
+    public Alert(int pin) {
         super(null);
         alertVolume = 0;
         activated = false;
-        this.pin = pin;
+        this.pin = initializePin(pin);
+    }
+
+    /**
+     * Metodo que inicializa o Pin
+     *
+     * @param number - senha que sera persistida no pin
+     * @return - pin
+     */
+    private char[] initializePin(int number) {
+        char digit[] = new char[4];
+        if (number > 999 && number < 10000) {// um numero de 4 digitos
+
+            int i = 0;
+            while (number > 0) {
+                digit[i] = (char) (number % 10);
+                number /= 10;
+                i++;
+            }
+        }
+        return digit;
     }
 
     /**
@@ -36,7 +55,7 @@ public class Alert extends Actuator {
     /**
      * Metodo de ativação/desativação da sirene
      *
-     * @param change - valor booleano 
+     * @param change - valor booleano
      */
     public void changeActivated(boolean change) {
         activated = change;

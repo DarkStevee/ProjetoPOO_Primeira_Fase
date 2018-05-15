@@ -15,9 +15,11 @@ public class Wifi {
      * Os indentificadores são guardados em pares para poder assim ser validados
      */
     private HashMap<Identifier, Identifier> connections;
+    private String password;
 
-    public Wifi() {
+    public Wifi(String password) {
         connections = new HashMap<>();
+        this.password = password;
     }
 
     /**
@@ -46,5 +48,13 @@ public class Wifi {
      */
     public boolean isPared(Identifier identifier) {
         return connections.containsKey(identifier) || connections.containsValue(identifier);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

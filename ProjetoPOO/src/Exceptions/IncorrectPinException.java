@@ -1,4 +1,3 @@
-
 package Exceptions;
 
 /**
@@ -8,7 +7,7 @@ package Exceptions;
  *
  */
 public class IncorrectPinException extends Exception {
-    
+
     public IncorrectPinException(String message) {
         super(message);
     }
