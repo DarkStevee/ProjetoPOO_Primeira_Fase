@@ -1,11 +1,14 @@
 package Actuators;
 
+import Program.Room;
+
 public class AirConditioning extends Actuator {
 
     private int roomTemperature; // 16 a 28
     private boolean on;
 
-    public AirConditioning(int roomTemperature) {
+    public AirConditioning(Room room, int roomTemperature) {
+    	super(room);
         this.roomTemperature = roomTemperature;
         on = false;
     }

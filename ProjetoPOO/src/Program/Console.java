@@ -1,7 +1,7 @@
 package Program;
 
 import Exceptions.ParedException;
-import Modules.Module;
+import Modules.*;
 import java.util.HashSet;
 
 public class Console {
@@ -13,13 +13,25 @@ public class Console {
     
     private HashSet<Room> rooms;
     private Wifi wifiConnections;
-    private HashSet<Module> modules;
+    
+    private LightControlModule lcm;
+    private TemperatureControlModule tcm;
+    private AlarmControlModule acm;
 
     public Console(String clientName) {
         this.clientName = clientName;
         this.clientNumber = ++clientCounter;
         wifiConnections = new Wifi();
         rooms = new HashSet<>();
+        
+        lcm = new LightControlModule();
+        tcm = new TemperatureControlModule();
+        acm = new AlarmControlModule();
+        initializeModules();
+    }
+    
+    public void initializeModules() {
+        //fazer.
     }
     
     public void addRoom(Room room) {
@@ -44,4 +56,9 @@ public class Console {
         return clientName + clientNumber;
     }
     
+    public void act() {
+    	lcm.act();
+    	tcm.act();
+    	acm.act();
+    }
 }

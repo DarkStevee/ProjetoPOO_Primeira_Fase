@@ -1,11 +1,13 @@
 package Actuators;
 
+import Program.Room;
 
 public class Alert extends Actuator {
 
     public int alertVolume;// 0 e 10
 
-    public Alert() {
+    public Alert(Room room) {
+    	super(room);
         alertVolume = 0;
     }
 

@@ -11,5 +11,4 @@ package Sensors;
  */
 public abstract class Sensor {
     
-public abstract boolean isOkay();
 }

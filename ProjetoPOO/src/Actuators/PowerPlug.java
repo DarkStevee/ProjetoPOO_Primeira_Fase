@@ -1,6 +1,9 @@
 package Actuators;
 
 import Program.Identifier;
+import Program.Room;
+import Sensors.TemperatureSensor;
+
 import java.time.LocalTime;
 
 
@@ -8,25 +11,36 @@ public class PowerPlug extends Actuator {
     private Identifier plugId;
     private boolean on;
     private LocalTime internalTime;
+    private Room room;
+    
+    private TemperatureSensor ts;  //unico pode estar ligado a tomada
 
-    public PowerPlug() {
-        plugId = new Identifier("Plug");
+    public PowerPlug(Room room) {
+        super(room);
+    	plugId = new Identifier("Plug");
         on = false;
         internalTime = null;
+        
+        ts = null;
+        
+    }
+    
+    public void connectTemperatureSensor(TemperatureSensor ts) {
+    	this.ts = ts;
+    }
+    
+    public void unplugSensor() {
+    	ts = null;
     }
 
     public boolean isOn() {
         return on;
     }
 
-    public void turnOff() {
-        on = false;
+    public void changeState(boolean state) {
+        on = state;
     }
-    
-    public void turnOn() {
-        on = true;
-    }
-    
+   
     public void turnOffAfterMinutes(long minutes) {
         if(minutes > 0 && internalTime == null) {
             internalTime = LocalTime.now().plusMinutes(minutes);
@@ -49,10 +63,10 @@ public class PowerPlug extends Actuator {
         if(internalTime != null) {
             if(LocalTime.now().equals(internalTime)) {
                 if(on) {
-                    turnOff();
+                    changeState(false);
                 }
                 else {
-                    turnOn();
+                    changeState(true);
                 }
             }
         }

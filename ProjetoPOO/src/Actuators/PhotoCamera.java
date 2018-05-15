@@ -6,27 +6,32 @@
 package Actuators;
 
 import Media.Photo;
-import Media.SaveAndLoadFiles;
+import Program.Room;
 import Media.TypePhoto;
 
 /**
  *
  * @author eugenio
  */
-public class PhotoCamera extends SaveAndLoadFiles {
+public class PhotoCamera extends Actuator {
+
     private boolean flash;
     private TypePhoto photoFormat;
 
-    public PhotoCamera() {
+    public PhotoCamera(Room room) {
+        super(room);
         flash = false;
     }
-    
-    
-    void photoShoot(String filename, TypePhoto typePhoto, int idRoom) throws IllegalArgumentException {
+
+    public void photoShoot(String filename, TypePhoto typePhoto, int idRoom) throws IllegalArgumentException {
         flash = true;
         Photo photo = new Photo(typePhoto, idRoom);
         savePhoto(filename, photo);
         flash = false;
     }
-    
+
+    public void savePhoto(String name, Photo photo) {
+
+    }
+
 }

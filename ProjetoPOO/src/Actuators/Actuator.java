@@ -5,11 +5,18 @@
  */
 package Actuators;
 
+import Program.Room;
 
 /**
  *
  * @author AndreLaptop
  */
 public abstract class Actuator {
+	
+	protected Room room;
+	
+	public Actuator(Room room) {
+		this.room = room;
+	}
 
 }

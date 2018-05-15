@@ -8,25 +8,30 @@ public class TemperatureSensor extends Sensor {
 
     private int temperature;
     private PowerPlug plug;
-    private int temperatureInterval;
-    private int idealTemperature;
+  //  private int temperatureInterval;
+  //  private int idealTemperature;
 
-    public TemperatureSensor(PowerPlug plug, int temperatureInterval, int temperature, int idealTemperature) {
+    public TemperatureSensor(PowerPlug plug, int temperature) {
         this.plug = plug;
         this.temperature = temperature;
-        this.temperatureInterval = temperatureInterval;
-        this.idealTemperature = idealTemperature;
+   //     this.temperatureInterval = temperatureInterval;
+   //     this.idealTemperature = idealTemperature;
     }
     
     public int getTemperature() throws NotPluggedInException {
-        if (plug.isOn()) {
-            return temperature;
+        if (plug == null || !plug.isOn()) {
+        	throw new NotPluggedInException("The plug to this sensor is not plugged in or is off");
         } else {
-            throw new NotPluggedInException("The plug to this sensor is not plugged in or is off");
+        	  return temperature;
         }
     }
     
-    public int getIdealTemperature() {
+    public void setTemperature(int temperature) {
+    	if(plug.isOn() && temperature > 0)
+    		this.temperature = temperature;
+    }
+    
+   /* public int getIdealTemperature() {
         return idealTemperature;
     }
     
@@ -55,5 +60,7 @@ public class TemperatureSensor extends Sensor {
             System.out.println(ex.getMessage());
         }
         return false;
-    }
+    }*/
+    
+    
 }

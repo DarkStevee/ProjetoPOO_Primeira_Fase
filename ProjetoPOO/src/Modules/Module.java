@@ -12,6 +12,10 @@ public abstract class Module {
     public Module() {
         rooms = new ArrayList<>();
     }
+
+	/**
+	 * 
+	 */
+	public abstract void act();
     
-    public abstract void act();
 }

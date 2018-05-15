@@ -20,9 +20,4 @@ public class LightSensor extends Sensor {
         }
         this.light = light;
     }
-
-    @Override
-    public boolean isOkay() {
-        return (light < 100 && light > 0);
-    }
 }

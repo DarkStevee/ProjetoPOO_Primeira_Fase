@@ -9,8 +9,8 @@ public class OpenDoorSensor extends Sensor{
         openDoor = false;
     }
     
-    public void setOpenDoor(Boolean bool) {
-        openDoor = bool;
+    public void changeOpenDoorState(boolean state) {
+        openDoor = state;
     }
     
     public boolean getOpenDoor() {

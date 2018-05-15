@@ -4,6 +4,7 @@ import Media.Photo;
 import Media.SaveAndLoadFiles;
 import Media.TypePhoto;
 import Media.Video;
+import Program.Room;
 
 public class VideoCamera extends SaveAndLoadFiles {
 

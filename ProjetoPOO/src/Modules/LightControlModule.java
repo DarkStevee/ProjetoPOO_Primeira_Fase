@@ -22,18 +22,9 @@ public class LightControlModule extends Module {
     @Override
     public void act(){
         for(Room r: rooms) {
-            for(Sensor s : r.getSensors()) {
-                if(!s.isOkay()) {
-                    if(s.getClass().equals(LightSensor.class)) {
-                        for(Actuator a : r.getActuators()) {
-                            if(a.getClass().equals(Lightbulb.class)) {
-                                if(a.)
-                            }
-                        }
-                    }
-                }
-            }
+        	
         }
+           
     }
 
     public void lightOn(){
