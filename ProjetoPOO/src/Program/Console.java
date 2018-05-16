@@ -7,7 +7,6 @@ import Exceptions.LightIntensityOutOfRangeException;
 import Exceptions.NotPluggedInException;
 import Exceptions.ParedException;
 import Exceptions.SensorNotImplomentedException;
-import Media.SaveAndLoadFiles;
 import Modules.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ import java.util.Arrays;
  * @version 1.00 Classe Console, classe de controle geral dos modulos
  *
  */
-public class Console implements Serializable{
+public class Console implements Serializable {
 
     private static int clientCounter = 0;
     private final String clientName;
@@ -35,10 +34,10 @@ public class Console implements Serializable{
     /**
      * Construtor que inicializa todos dos modulos
      *
-     * @param clientName
-     * @param wifi
-     * @param alert
-     * @param roomstoAdd
+     * @param clientName - Nome do cliente que sera registrado na consola
+     * @param wifi - Objeto do wifi que ira ser responsavel pela conexão
+     * @param alert - Objeto do alert
+     * @param roomstoAdd - Array de divisões que sera controlado
      */
     public Console(String clientName, Wifi wifi, Alert alert, ArrayList<Room> roomstoAdd) {
         this.clientName = clientName;
@@ -52,20 +51,27 @@ public class Console implements Serializable{
         lcm = new LightControlModule(rooms);
         tcm = new TemperatureControlModule(rooms);
         acm = new AlarmControlModule(rooms, alert);
-
     }
-    
+
     public Alert getAlert() {
         return alert;
     }
-    
+
     public Identifier getIdentifier() {
         return wifiIdentifier;
     }
 
-    public void setStateOfPlugOfRoom(Room room, boolean state) throws NotPluggedInException, IllegalArgumentException, ParedException { 
-        //liga ou desliga a plug e todos os que estiverem com ela
-        // acedida pela sala, room.getPowerPlug()
+    /**
+     * metodo que liga ou desliga a plug e todos os que estiverem com ela
+     * acedida pela sala
+     *
+     * @param room
+     * @param state
+     * @throws NotPluggedInException
+     * @throws IllegalArgumentException
+     * @throws ParedException
+     */
+    public void setStateOfPlugOfRoom(Room room, boolean state) throws NotPluggedInException, IllegalArgumentException, ParedException {
         if (room != null) {
             if (wifiConnections.isPared(room.getPowerPlug().getIdentifier())) {
                 PowerPlug plug = room.getPowerPlug();
@@ -82,6 +88,14 @@ public class Console implements Serializable{
         }
     }
 
+    /**
+     * metodo que acede ao ar condicionado de uma divisão diretamente pelo
+     * consola principal
+     *
+     * @param room
+     * @param state
+     * @throws IllegalArgumentException
+     */
     public void setACOfRoom(Room room, boolean state) throws IllegalArgumentException {
         if (room == null) {
             throw new IllegalArgumentException("This room doesnt exist");
@@ -89,7 +103,14 @@ public class Console implements Serializable{
         room.getAirConditioning().turnOnOrOff(state);
     }
 
-    public void setLightOfRoom(Room room, int intensity) { //aceder à lampada de uma certa sala pela consola
+    /**
+     * metodo que acede a lampada de uma divisão diretamente pelo consola
+     * principal
+     *
+     * @param room
+     * @param intensity
+     */
+    public void setLightOfRoom(Room room, int intensity) {
         for (Room r : rooms) {
             if (r.equals(room)) {
                 try {
@@ -101,7 +122,12 @@ public class Console implements Serializable{
         }
     }
 
-    public void setAlertVolume(int volume) { //muda o volume do alarme da casa para o que o utilizador por
+    /**
+     * Metodo para setar o volume da sirene
+     *
+     * @param volume
+     */
+    public void setAlertVolume(int volume) {
         try {
             alert.changeVolume(volume);
         } catch (IllegalArgumentException ex) {
@@ -110,7 +136,8 @@ public class Console implements Serializable{
     }
 
     /**
-     * Metodo que permite desativar a sirene caso o pin seja correctamente digitado
+     * Metodo que permite desativar a sirene caso o pin seja correctamente
+     * digitado
      *
      * @param pin - senha para validação
      * @param change
@@ -148,7 +175,7 @@ public class Console implements Serializable{
      */
     public void addConnection(Identifier identifier1, Identifier identifer2, String password) throws IllegalArgumentException, NullPointerException, ParedException {
         if (password.equals(wifiConnections.getPassword())) {
-                wifiConnections.addConnection(identifier1, identifer2);
+            wifiConnections.addConnection(identifier1, identifer2);
         } else {
             throw new IllegalArgumentException("The password isnt correct");
         }

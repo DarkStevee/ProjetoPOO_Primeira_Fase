@@ -1,10 +1,6 @@
 package Actuators;
 
-import Media.Photo;
-import Media.SaveAndLoadFiles;
-import Media.TypePhoto;
-import Media.Video;
-import Program.Room;
+import Media.*;
 
 /**
  * @author Andre Ribeiro n_170221006

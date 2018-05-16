@@ -7,7 +7,10 @@ package Exceptions;
  *
  */
 public class NotPluggedInException extends Exception {
-
+/**
+ * gera uma mensagem de erro devido a tomada estar desligada
+ * @param message 
+ */
     public NotPluggedInException(String message) {
         super(message);
     }

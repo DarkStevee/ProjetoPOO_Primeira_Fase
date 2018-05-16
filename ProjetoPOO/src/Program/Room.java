@@ -43,19 +43,34 @@ public class Room implements Serializable{
     public int getId() {
         return id;
     }
-
+/**
+ * Adiciona um act do ar condicionado aos pools de act
+ * @param ac 
+ */
     public void addAcToRoom(AirConditioning ac) {
         this.ac = ac;
     }
-
+/**
+ * Adiciona um act do lampadas aos pools de act
+ * @param bulb 
+ */
     public void addLightbulbToRoom(Lightbulb bulb) {
         this.lb = bulb;
     }
-
+/**
+ * Adiciona um act tomada aos pools de act
+ * @param plug 
+ */
     public void addPowerPlugToRoom(PowerPlug plug) {
         this.pp = plug;
     }
 
+    
+/**
+ * Seta a intensidade da luminosidade
+ * @param lightIntensity
+ * @throws LightIntensityOutOfRangeException 
+ */
     public void setLightIntensity(int lightIntensity) throws LightIntensityOutOfRangeException {
         if (lb != null) {
             lb.setLightIntensity(lightIntensity);

@@ -16,11 +16,17 @@ public abstract class Sensor implements Serializable{
     public Sensor(Room room) {
         this.room = room;
     }
-
+/**
+ * 
+ * @return a divisão que está atuando
+ */
     public Room getRoom() {
         return room;
     }
-
+/**
+ * seta a divisão que atuara
+ * @param room 
+ */
     public void setRoom(Room room) {
         this.room = room;
     }

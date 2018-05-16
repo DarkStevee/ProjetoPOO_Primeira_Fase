@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @version 1.00 Classe abstrata padrão para base dos atuadores.
  *
  */
-public abstract class Actuator implements Serializable{
+public abstract class Actuator implements Serializable {
 
     protected Room room;
 
@@ -17,10 +17,20 @@ public abstract class Actuator implements Serializable{
         this.room = room;
     }
 
+    /**
+     * Metodo getRoom
+     *
+     * @return uma room setada na classe
+     */
     public Room getRoom() {
         return room;
     }
 
+    /**
+     * metoto para setar uma room
+     *
+     * @param room
+     */
     public void setRoom(Room room) {
         this.room = room;
     }

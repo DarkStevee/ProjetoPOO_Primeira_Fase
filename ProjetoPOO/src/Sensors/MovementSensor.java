@@ -36,17 +36,26 @@ public class MovementSensor extends Sensor{
             throw new MovementSensorNotOnException("Turn movement sensor on first");
         }
     }
-
+/**
+ * Metodo que seta se tem ou não movimento
+ * @param bool 
+ */
     public void setMovement(boolean bool) {
         if (isOn) {
             movement = bool;
         }
     }
-
+/**
+ * liga/desliga o movimento
+ * @param state 
+ */
     public void changeState(boolean state) {
         isOn = state;
     }
-
+/**
+ * 
+ * @return o identificador relacionado
+ */
     public Identifier getIdentifier() {
         return identifier;
     }

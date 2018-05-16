@@ -22,12 +22,12 @@ public class Alert extends Actuator {
     /**
      * Metodo que inicializa o Pin
      *
-     * @param number - senha que sera persistida no pin
-     * @return - pin
+     * @param number - senha que sera onde sera setado o pin
+     * @return - pin com numero definido
      */
     public char[] initializePin(int number) {
         char digit[] = new char[4];
-        if (number > 999 && number < 10000) {// um numero de 4 digitos
+        if (number > 999 && number < 10000) {
 
             int i = 0;
             while (number > 0) {
@@ -60,15 +60,24 @@ public class Alert extends Actuator {
     public void changeActivated(boolean change) {
         activated = change;
     }
-
+/**
+ * 
+ * @return se a sirene está ativada
+ */
     public boolean getActivated() {
         return activated;
     }
-
+/**
+ * 
+ * @return o pin salvo
+ */
     public char[] getPin() {
         return pin;
     }
-
+/**
+ * 
+ * @return  o volume da sirene
+ */
     public int getVolume() {
         return alertVolume;
     }

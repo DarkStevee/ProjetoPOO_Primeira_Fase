@@ -25,7 +25,10 @@ public class OpenDoorSensor extends Sensor {
     public void changeOpenDoorState(boolean state) {
         openDoor = state;
     }
-
+/**
+ * 
+ * @return um booleano se a porta está ou não aberta
+ */
     public boolean getOpenDoor() {
         return openDoor;
     }

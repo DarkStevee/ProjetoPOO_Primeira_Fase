@@ -52,12 +52,12 @@ public abstract class SaveAndLoadFiles implements Serializable {
         } catch (ClassNotFoundException var5) {
             var5.getMessage();
         }
-
         return c;
     }
 
     /**
-     * Metodo responsavel por salvar as photos tiradas pelas cameras de fotos e video cameras
+     * Metodo responsavel por salvar as photos tiradas pelas cameras de fotos e
+     * video cameras
      *
      * @param filename - nome do arquivo que sera salvo
      * @param photo - objeto que sera persistido
@@ -94,7 +94,13 @@ public abstract class SaveAndLoadFiles implements Serializable {
         }
         return c;
     }
-    
+
+    /**
+     * Metodos para carregar o console de um respectivo arquivo
+     *
+     * @param filename - nome do arquivo que sera carregado
+     * @return - o console
+     */
     public static Console loadConsole(String filename) {
         Console c = null;
         try {
@@ -110,7 +116,13 @@ public abstract class SaveAndLoadFiles implements Serializable {
         }
         return c;
     }
-    
+
+    /**
+     * Metodo responsavel por salvar o console
+     *
+     * @param filename - nome do arquivo que sera carregado
+     * @param console
+     */
     public static void saveConsole(String filename, Console console) {
         try {
             FileOutputStream fileOut = new FileOutputStream(filename);

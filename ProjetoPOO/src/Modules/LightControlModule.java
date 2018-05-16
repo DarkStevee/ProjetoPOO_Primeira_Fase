@@ -1,7 +1,6 @@
 package Modules;
 
 import Actuators.Lightbulb;
-import Actuators.PowerPlug;
 import Exceptions.LightIntensityOutOfRangeException;
 import Program.Room;
 import Sensors.LightSensor;
@@ -22,7 +21,7 @@ public class LightControlModule extends Module {
     /**
      * Metodo de controlo da luminosidade
      *
-     * @param room
+     * @param room - Objeto da divisão onde sera acionado o controle
      * @param intensity - intensidade da luz
      */
     public void switchLightsOfRoom(Room room, int intensity) {
@@ -57,7 +56,5 @@ public class LightControlModule extends Module {
                 }
             }
         }
-
     }
-
 }

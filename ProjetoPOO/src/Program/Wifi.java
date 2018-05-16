@@ -24,7 +24,7 @@ public class Wifi implements Serializable{
     }
 
     /**
-     * Metodo que adiciona os identificadores nas conecçoes
+     * Metodo que adiciona os identificadores nas conexoes
      *
      * @param identifier1
      * @param identifier2
@@ -45,7 +45,7 @@ public class Wifi implements Serializable{
      * Metodo para validaçãp do indenficador
      *
      * @param identifier
-     * @return
+     * @return um booleano caso sejam pares
      */
     public boolean isPared(Identifier identifier) {
         return connections.containsKey(identifier) || connections.containsValue(identifier);

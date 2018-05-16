@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Classe Photo responsavel por guardar as informações da photo tirada.
+ * @version 1.00 Classe Photo que é um objeto da foto tirada.
  *
  */
 public class Photo implements Serializable {
@@ -20,7 +20,10 @@ public class Photo implements Serializable {
         dateTime = LocalDateTime.now();
         this.idRoom = idRoom;
     }
-
+/**
+ * 
+ * @return a data que a foto foi retirada
+ */
     public LocalDateTime getDateTime() {
         return dateTime;
     }

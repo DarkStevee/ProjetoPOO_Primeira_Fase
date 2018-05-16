@@ -16,8 +16,9 @@ public class AirConditioning extends Actuator {
     /**
      * Contrutor Ar condicionado
      *
-     * @param room - uma divisão
-     * @param roomTemperature - temperatura atual dessa divisão
+     * @param room - recebe uma divisão como padrão
+     * @param roomTemperature - retorna a temperatura atual da divisão ao qual
+     * pertence
      */
     public AirConditioning(Room room, int roomTemperature) {
         super(room);
@@ -28,7 +29,7 @@ public class AirConditioning extends Actuator {
     /**
      * Metodo responsavel pelo acionamento do aparelho
      *
-     * @param state
+     * @param state - recebe como padrão um valor booleano
      */
     public void turnOnOrOff(boolean state) {
         on = state;
@@ -37,7 +38,7 @@ public class AirConditioning extends Actuator {
     /**
      * Metodo responsavel setar a temperatura atual do ambiente
      *
-     * @param temperature - temperatura que ira ser setada
+     * @param temperature - temperatura que ira ser setada no ambiente
      */
     public void setTemperature(int temperature) {
         if (on) {
@@ -52,7 +53,7 @@ public class AirConditioning extends Actuator {
     /**
      * Metodo para retorno da temperatura
      *
-     * @return temperatura da divisão
+     * @return - temperatura da divisão
      */
     public int getRoomTemperature() {
         return roomTemperature;

@@ -23,7 +23,8 @@ public class AlarmControlModule extends Module {
     }
 
     /**
-     * Metodo reponsavel pela detecção de um intruso com retorno boolean caso haja um intruso
+     * Metodo reponsavel pela detecção de um intruso com retorno boolean caso
+     * haja um intruso
      *
      * @param room
      * @return
@@ -42,8 +43,8 @@ public class AlarmControlModule extends Module {
     /**
      * Metodo de acionamento da camera fotografica
      *
-     * @param typePhoto
-     * @param idRoom
+     * @param typePhoto - Enum com o tipo da fotografia
+     * @param idRoom - int que referencia o local onde a foto foi tirada
      */
     public void takePhoto(TypePhoto typePhoto, int idRoom) {
         Photo photo = new Photo(typePhoto, idRoom);

@@ -3,7 +3,7 @@ package Media;
 /**
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
- * @version 1.00 Enum com as opões para as fotografias
+ * @version 1.00 Enum com as opções para as fotografias
  *
  */
 public enum TypePhoto {

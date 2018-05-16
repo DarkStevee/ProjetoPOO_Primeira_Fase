@@ -1,16 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Exceptions;
 
 /**
+ * @author Andre Ribeiro n_170221006
+ * @author Eugenio Silva n_170221069
+ * @version 1.00 Classe Erro estende uma Exception para caso o sensor não esteja implementado correctamente
  *
- * @author AndreLaptop
  */
 public class SensorNotImplomentedException extends Exception {
-
+/**
+ * gera uma mensagem de erro devido aos sensores estejam implementados incorretamente
+ * @param message 
+ */
     public SensorNotImplomentedException(String message) {
         super(message);
     }

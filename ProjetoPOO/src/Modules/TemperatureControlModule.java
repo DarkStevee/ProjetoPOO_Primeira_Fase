@@ -48,7 +48,6 @@ public class TemperatureControlModule extends Module {
                 } catch (NotPluggedInException ex) {
                     System.out.println(ex.getMessage());
                 }
-                // alterar temperatura quarto e sensor
             }
         }
     }

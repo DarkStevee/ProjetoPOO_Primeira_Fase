@@ -10,7 +10,7 @@ import Program.Room;
  */
 public class LightSensor extends Sensor{
 
-    private int light; //0 a 100%
+    private int light;
 
     public LightSensor(int initialLight, Room room) {
         super(room);
@@ -24,7 +24,7 @@ public class LightSensor extends Sensor{
     /**
      * Metodo que modifica a luminosidade do ambiente entre 0 e 100%
      *
-     * @param light
+     * @param light - o valor entre 0 e 100 da lampada
      * @throws IllegalArgumentException
      */
     public void setLight(int light) throws IllegalArgumentException {
