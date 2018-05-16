@@ -1,5 +1,6 @@
 package Media;
 
+import Program.Console;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -92,6 +93,33 @@ public abstract class SaveAndLoadFiles implements Serializable {
             var5.getMessage();
         }
         return c;
+    }
+    
+    public static Console loadConsole(String filename) {
+        Console c = null;
+        try {
+            FileInputStream fileIn = new FileInputStream(filename);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            c = (Console) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException var4) {
+            var4.getMessage();
+        } catch (ClassNotFoundException var5) {
+            var5.getMessage();
+        }
+        return c;
+    }
+    
+    public static void saveConsole(String filename, Console console) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(filename);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(console);
+            out.close();
+        } catch (IOException var4) {
+            var4.getMessage();
+        }
     }
 
 }

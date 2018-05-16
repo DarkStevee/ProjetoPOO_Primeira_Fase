@@ -7,7 +7,9 @@ import Exceptions.LightIntensityOutOfRangeException;
 import Exceptions.NotPluggedInException;
 import Exceptions.ParedException;
 import Exceptions.SensorNotImplomentedException;
+import Media.SaveAndLoadFiles;
 import Modules.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -17,7 +19,7 @@ import java.util.Arrays;
  * @version 1.00 Classe Console, classe de controle geral dos modulos
  *
  */
-public class Console {
+public class Console implements Serializable{
 
     private static int clientCounter = 0;
     private final String clientName;
@@ -51,6 +53,10 @@ public class Console {
         tcm = new TemperatureControlModule(rooms);
         acm = new AlarmControlModule(rooms, alert);
 
+    }
+    
+    public Alert getAlert() {
+        return alert;
     }
     
     public Identifier getIdentifier() {
@@ -110,8 +116,9 @@ public class Console {
      * @param change
      * @throws IncorrectPinException
      */
-    public void changeActivatedWithPin(char[] pin, boolean change) throws IncorrectPinException { //terá que fornecer o pin correto e depois consegue mudar
-        if (Arrays.equals(pin, alert.getPin())) {
+    public void changeActivatedWithPin(int pin, boolean change) throws IncorrectPinException { //terá que fornecer o pin correto e depois consegue mudar
+        char[] pinArray = alert.initializePin(pin);
+        if (Arrays.equals(pinArray, alert.getPin())) {
             alert.changeActivated(change);
         } else {
             throw new IncorrectPinException("Incorrect Pin");

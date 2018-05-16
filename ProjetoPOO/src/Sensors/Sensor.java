@@ -1,6 +1,7 @@
 package Sensors;
 
 import Program.Room;
+import java.io.Serializable;
 
 /**
  * @author Andre Ribeiro n_170221006
@@ -8,7 +9,7 @@ import Program.Room;
  * @version 1.00 Classe abstrata Sensor, classe base para os outros sensores
  *
  */
-public abstract class Sensor {
+public abstract class Sensor implements Serializable{
 
     protected Room room;
 

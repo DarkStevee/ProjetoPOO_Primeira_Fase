@@ -6,6 +6,7 @@ import Exceptions.MovementSensorNotOnException;
 import Exceptions.NotPluggedInException;
 import Exceptions.SensorNotImplomentedException;
 import Sensors.*;
+import java.io.Serializable;
 
 /**
  * @author Andre Ribeiro n_170221006
@@ -13,7 +14,7 @@ import Sensors.*;
  * @version 1.00 Classe Room, representa as divisões, onde em cada divisão, teremos nela os sensores e atuadores
  *
  */
-public class Room {
+public class Room implements Serializable{
 
     private static int count;
     private final int id;

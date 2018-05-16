@@ -8,7 +8,7 @@ import Program.Room;
  * @version 1.00 Classe responsavel pelo Sensor de iluminação, extent a classe Sensor
  *
  */
-public class LightSensor extends Sensor {
+public class LightSensor extends Sensor{
 
     private int light; //0 a 100%
 

@@ -1,5 +1,6 @@
 package Program;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -8,7 +9,7 @@ import java.util.UUID;
  * @version 1.00 Classe Identifer, classe que gera um UUID random que sera usado pelo wifi
  *
  */
-public class Identifier {
+public class Identifier implements Serializable{
 
     private final UUID identifier;
 

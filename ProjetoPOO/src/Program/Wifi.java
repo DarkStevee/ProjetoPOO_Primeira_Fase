@@ -1,6 +1,7 @@
 package Program;
 
 import Exceptions.ParedException;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -9,7 +10,7 @@ import java.util.HashMap;
  * @version 1.00 Classe Wifi, representa o wifi e suas ligações
  *
  */
-public class Wifi {
+public class Wifi implements Serializable{
 
     /**
      * Os indentificadores são guardados em pares para poder assim ser validados

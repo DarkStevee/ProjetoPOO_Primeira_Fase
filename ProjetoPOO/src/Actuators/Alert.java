@@ -25,7 +25,7 @@ public class Alert extends Actuator {
      * @param number - senha que sera persistida no pin
      * @return - pin
      */
-    private char[] initializePin(int number) {
+    public char[] initializePin(int number) {
         char digit[] = new char[4];
         if (number > 999 && number < 10000) {// um numero de 4 digitos
 
@@ -69,4 +69,7 @@ public class Alert extends Actuator {
         return pin;
     }
 
+    public int getVolume() {
+        return alertVolume;
+    }
 }

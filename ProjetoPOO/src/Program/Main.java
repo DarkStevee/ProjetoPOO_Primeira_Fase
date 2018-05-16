@@ -1,16 +1,18 @@
 package Program;
 
 import Actuators.*;
+import Exceptions.IncorrectPinException;
 import Exceptions.NotPluggedInException;
 import Exceptions.ParedException;
 import Exceptions.SensorNotImplomentedException;
+import Media.SaveAndLoadFiles;
 import Sensors.*;
 import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
-
+        SaveAndLoadFiles.loadConsole("consola.bin"); // faz load da consola
         Wifi wifi = new Wifi("Casa");
         Alert alert = new Alert(1612);
         Room room = new Room(15, 2, 50);
@@ -50,7 +52,7 @@ public class Main {
         try {
             System.out.println("Initial luminosity to be compared at the end:");
             System.out.println(room.getCurrentLuminosity());
-            
+
             System.out.println("Erro:");
             room.getMovementSensor().changeState(true);
             centralConsole.act();
@@ -87,19 +89,33 @@ public class Main {
         } catch (SensorNotImplomentedException | NotPluggedInException | IllegalArgumentException | ParedException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         //teste na lightcontrol
         try {
             System.out.println("After the console being activated and the light has been controled:");
             System.out.println(room.getCurrentLuminosity());
-            
+
         } catch (SensorNotImplomentedException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         //teste da alarmcontrolmodule
         try {
-            
+            System.out.println("if alert rings, which it should since there has been an intruder, the volume must be at 10");
+            centralConsole.changeActivatedWithPin(1612, true);
+            ms.changeState(true); //a fingir que houve uma intrusao
+            ms.setMovement(true);
+            System.out.println("Intruder:");
+            System.out.println(centralConsole.getAlert().getActivated());
+            centralConsole.act();
+            System.out.println("volume:");
+            System.out.println(centralConsole.getAlert().getVolume());
+        } catch (IncorrectPinException | SensorNotImplomentedException ex) {
+            System.out.println(ex.getMessage());
         }
+
+        //save and load
+        System.out.println("saving the console");
+        SaveAndLoadFiles.saveConsole("consola.bin", centralConsole); //faz saev da consola
     }
 }

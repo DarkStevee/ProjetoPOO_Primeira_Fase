@@ -10,7 +10,7 @@ import Program.Room;
  * @version 1.00 Classe responsavel pelo Sensor de movimento, extent a classe Sensor
  *
  */
-public class MovementSensor extends Sensor {
+public class MovementSensor extends Sensor{
 
     private final Identifier identifier;
     private boolean isOn;

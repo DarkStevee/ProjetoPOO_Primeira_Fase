@@ -1,6 +1,7 @@
 package Modules;
 
 import Program.Room;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * @version 1.00 Classe abstrata Modulo que tera as informações importantes para todos os outros modulos
  *
  */
-public abstract class Module {
+public abstract class Module implements Serializable{
 
     protected ArrayList<Room> rooms;
 

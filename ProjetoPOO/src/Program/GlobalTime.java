@@ -1,5 +1,6 @@
 package Program;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +11,7 @@ import java.time.format.DateTimeFormatter;
  * @version 1.00 Classe GlobalTime, classe unica que gera uma tempo para ser usado como base
  *
  */
-public class GlobalTime {
+public class GlobalTime implements Serializable{
 
     public static final LocalTime TIME = LocalTime.now();
 

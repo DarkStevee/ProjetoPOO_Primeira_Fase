@@ -1,6 +1,7 @@
 package Actuators;
 
 import Program.Room;
+import java.io.Serializable;
 
 /**
  * @author Andre Ribeiro n_170221006
@@ -8,7 +9,7 @@ import Program.Room;
  * @version 1.00 Classe abstrata padrão para base dos atuadores.
  *
  */
-public abstract class Actuator {
+public abstract class Actuator implements Serializable{
 
     protected Room room;
 
