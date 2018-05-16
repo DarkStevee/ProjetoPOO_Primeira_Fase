@@ -45,13 +45,12 @@ public class LightControlModule extends Module {
         for (Room r : rooms) {
             LightSensor ls = r.getLightSensor();
             Lightbulb lb = r.getLightbulb();
-            PowerPlug pp = r.getPowerPlug();
-            if (ls != null && lb != null && pp != null) {
+            if (ls != null && lb != null) {
                 int idealLight = r.getIdealLight();
                 int curLight = ls.getLight();
                 if (curLight != idealLight) {
                     try {
-                        r.setLightIntensity(idealLight);
+                        r.setLightIntensity(idealLight / 5);
                     } catch (LightIntensityOutOfRangeException ex) {
                         System.out.println(ex.getMessage());
                     }

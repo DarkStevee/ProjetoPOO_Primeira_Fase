@@ -58,7 +58,7 @@ public class Room {
     public void setLightIntensity(int lightIntensity) throws LightIntensityOutOfRangeException {
         if (lb != null) {
             lb.setLightIntensity(lightIntensity);
-            //this.luminosity = (lightIntensity * 100) / 20; //recebe luminosity de 0-10 converte para a escala 0-100
+            //recebe luminosity de 0-10 converte para a escala 0-100
             ls.setLight((lightIntensity * 100) / 20);
         }
     }
