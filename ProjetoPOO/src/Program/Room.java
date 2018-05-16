@@ -78,73 +78,121 @@ public class Room implements Serializable{
             ls.setLight((lightIntensity * 100) / 20);
         }
     }
-
+/**
+ * Metodo que seta a temperatura do ambiente
+ * @param temperature 
+ */
     public void setTemperature(int temperature) {
         if (ac != null) {
             ac.setTemperature(temperature); // check if temperature can be changed to this value, if not throws an exception
             ts.setTemperature(temperature);
         }
     }
-
+/**
+ * Seta um sensor de temperatura
+ * @param ts 
+ */
     public void setTemperatureSensor(TemperatureSensor ts) {
         ts.setRoom(this);
         this.ts = ts;
     }
-
+/**
+ * Setaum sensor de iluminação
+ * @param ls 
+ */
     public void setLightSensor(LightSensor ls) {
         ls.setRoom(this);
         this.ls = ls;
     }
-
+/**
+ * Seta um sensor de porta aberta
+ * @param ods 
+ */
     public void setOpenDoorSensor(OpenDoorSensor ods) {
         ods.setRoom(this);
         this.ods = ods;
     }
-
+/**
+ * Seta um sensor de movimento
+ * @param ms 
+ */
     public void setMovementSensor(MovementSensor ms) {
         ms.setRoom(this);
         this.ms = ms;
     }
-
+/**
+ * 
+ * @return - sensor de temperatura
+ */
     public TemperatureSensor getTemperatureSensor() {
         return ts;
     }
-
+/**
+ * 
+ * @return - sensor de iluminação
+ */
     public LightSensor getLightSensor() {
         return ls;
     }
-
+/**
+ * 
+ * @return - sensor de porta aberta
+ */
     public OpenDoorSensor getOpenDoorSensor() {
         return ods;
     }
-
+/**
+ * 
+ * @return sensor de movimento
+ */
     public MovementSensor getMovementSensor() {
         return ms;
     }
-
+/**
+ * 
+ * @return - um ar condicionado
+ */
     public AirConditioning getAirConditioning() {
         return ac;
     }
-
+/**
+ * 
+ * @return - uma lampada
+ */
     public Lightbulb getLightbulb() {
         return lb;
     }
-
+/**
+ * 
+ * @return uma tomada.
+ */
     public PowerPlug getPowerPlug() {
         return pp;
     }
-
+/**
+ * 
+ * @return - o intervalo de temperatura
+ */
     public int getInterval() {
         return interval;
     }
-
+/**
+ * Setar a diferenca de temperatura possivel para uma divisao
+ * @param interval
+ * @throws IllegalArgumentException - Erro caso o intervalo seja invalido
+ */
     public void setInterval(int interval) throws IllegalArgumentException {
         if (interval < 0 || interval > 5) {
             throw new IllegalArgumentException("Interval must be between 0 and 5");
         }
         this.interval = interval;
     }
-
+/**
+ * 
+ * @return - temperatura atual da divisão
+ * @throws NotPluggedInException - Erro caso não esteja ligado a tomada
+ * @throws SensorNotImplomentedException - Erro caso o sensor esteja desligado
+ */
     public int getCurrentTemperature() throws NotPluggedInException, SensorNotImplomentedException {
         if (ts == null) {
             throw new SensorNotImplomentedException("luminosity sensor is not implomented");
@@ -152,15 +200,25 @@ public class Room implements Serializable{
             return ts.getTemperature();
         }
     }
-
+/**
+ * 
+ * @return - temperatura ideal para a divisao
+ */
     public int getIdealTemperature() {
         return idealTemperature;
     }
-
+/**
+ * 
+ * @return - iluminação ideal para a divisao
+ */
     public int getIdealLight() {
         return idealLight;
     }
-
+/**
+ * 
+ * @return - luminosidade da divisao
+ * @throws SensorNotImplomentedException - Erro caso o sensor esteja desligado
+ */
     public int getCurrentLuminosity() throws SensorNotImplomentedException {
         if (ls == null) {
             throw new SensorNotImplomentedException("luminosity sensor is not implomented");
@@ -168,7 +226,11 @@ public class Room implements Serializable{
             return ls.getLight();
         }
     }
-
+/**
+ * 
+ * @return - do estado da porta
+ * @throws SensorNotImplomentedException caso o sensor não esteja ligado
+ */
     public boolean isDoorOpen() throws SensorNotImplomentedException {
         if (ods == null) {
             throw new SensorNotImplomentedException("open door sensor is not implomented");
@@ -176,7 +238,12 @@ public class Room implements Serializable{
             return ods.getOpenDoor();
         }
     }
-
+/**
+ * 
+ * @return - se há movimento no ambiente
+ * @throws MovementSensorNotOnException - erro caso o sensor esteja desligado
+ * @throws SensorNotImplomentedException - Erro caso o sensor não esteja implementado
+ */
     public boolean hasMovement() throws MovementSensorNotOnException, SensorNotImplomentedException {
         if (ms == null) {
             throw new SensorNotImplomentedException("movement sensor is not implomented");
@@ -184,7 +251,10 @@ public class Room implements Serializable{
             return ms.hasMovement();
         }
     }
-
+/**
+ * 
+ * @return String com as informações dos objetos.
+ */
     @Override
     public String toString() {
         String info = ("the Room number: " + id + " has these sensors:\n");
@@ -193,7 +263,11 @@ public class Room implements Serializable{
         //info = actuators.stream().map((a) -> a.toString() + "\n").reduce(info, String::concat);
         return info;
     }
-
+/**
+ * 
+ * @param obj
+ * @return - true caso os objetos sejam iguais.
+ */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

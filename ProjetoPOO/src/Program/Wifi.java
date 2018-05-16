@@ -50,11 +50,17 @@ public class Wifi implements Serializable{
     public boolean isPared(Identifier identifier) {
         return connections.containsKey(identifier) || connections.containsValue(identifier);
     }
-
+/**
+ * 
+ * @return - senha salva na classe
+ */
     public String getPassword() {
         return password;
     }
-
+/**
+ * Seta a senha 
+ * @param password 
+ */
     public void setPassword(String password) {
         this.password = password;
     }

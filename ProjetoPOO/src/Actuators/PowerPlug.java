@@ -46,7 +46,7 @@ public class PowerPlug extends Actuator {
 
     /**
      *
-     * @return um idenficador
+     * @return - um idenficador
      */
     public Identifier getIdentifier() {
         return plugId;
@@ -54,16 +54,16 @@ public class PowerPlug extends Actuator {
 
     /**
      *
-     * @return se a tomada está ligada
+     * @return - estado da tomada
      */
     public boolean isOn() {
         return on;
     }
 
     /**
-     * liga/desliga a tomada
+     * Metodo liga/desliga a tomada
      *
-     * @param state
+     * @param state - boolean de alteração.
      */
     public void changeState(boolean state) {
         on = state;

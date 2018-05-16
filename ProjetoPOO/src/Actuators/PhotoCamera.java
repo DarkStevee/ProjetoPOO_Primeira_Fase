@@ -27,9 +27,8 @@ public class PhotoCamera extends Actuator {
      * Metodo para a persistencia de uma fotografia
      *
      * @param filename - nome do arquivo que sera salvo
-     * @param TypePhoto - tipo da foto que sera salvo
      * @param idRoom - id da divisão onde a foto foi tirada
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException - Erro caso a persistencia seja incorreta
      */
     public void photoShoot(String filename, TypePhoto typePhoto, int idRoom) throws IllegalArgumentException {
         flash = true;

@@ -13,13 +13,7 @@ public class AirConditioning extends Actuator {
     private int roomTemperature; // 16 a 28
     private boolean on;
 
-    /**
-     * Contrutor Ar condicionado
-     *
-     * @param room - recebe uma divisão como padrão
-     * @param roomTemperature - retorna a temperatura atual da divisão ao qual
-     * pertence
-     */
+  
     public AirConditioning(Room room, int roomTemperature) {
         super(room);
         this.roomTemperature = roomTemperature;

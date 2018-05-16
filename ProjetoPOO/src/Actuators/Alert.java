@@ -43,7 +43,7 @@ public class Alert extends Actuator {
      * Metodo responsavel por aumentar e baixar volume da sirene
      *
      * @param alertVolume - a altura entre 0 e 10 que sera setada
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException - erro gerado caso seja passado um volume incorreto
      */
     public void changeVolume(int alertVolume) throws IllegalArgumentException {
         if (alertVolume < 0 || alertVolume > 10) {

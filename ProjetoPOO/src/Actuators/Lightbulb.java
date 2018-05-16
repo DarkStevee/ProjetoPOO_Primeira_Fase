@@ -7,7 +7,7 @@ import Program.Room;
  * @author Andre Ribeiro n_170221006
  * @author Eugenio Silva n_170221069
  * @version 1.00 Classe Lampada extend a classe de Atuadores Classe responsavel
- * pela ativação/desativação das lampadas das divisões
+ * pela ativacao/desativação das lampadas das divisoes
  *
  */
 public class Lightbulb extends Actuator {
@@ -25,7 +25,7 @@ public class Lightbulb extends Actuator {
      * Metodo de ajuste da intensidade da iluminação
      *
      * @param lightIntensity - valor que sera setado
-     * @throws LightIntensityOutOfRangeException
+     * @throws LightIntensityOutOfRangeException - Erro caso a intensidade seja incorreta
      */
     public void setLightIntensity(int lightIntensity) throws LightIntensityOutOfRangeException {
         if (lightIntensity >= 0 && lightIntensity <= 20) {

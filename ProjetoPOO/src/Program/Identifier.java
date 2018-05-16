@@ -16,11 +16,16 @@ public class Identifier implements Serializable{
     public Identifier(String name) {
         identifier = UUID.randomUUID();
     }
-
+/**
+ * 
+ * @return - identificador unico
+ */
     public UUID getIdentifier() {
         return identifier;
     }
-
+/**
+ * Metodo de print do toString do identificador.
+ */
     public void printIdentifer() {
         System.out.println(identifier.toString());
     }

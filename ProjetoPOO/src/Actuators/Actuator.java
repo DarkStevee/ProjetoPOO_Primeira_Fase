@@ -18,9 +18,8 @@ public abstract class Actuator implements Serializable {
     }
 
     /**
-     * Metodo getRoom
      *
-     * @return uma room setada na classe
+     * @return - Divisão setada na classe
      */
     public Room getRoom() {
         return room;
@@ -29,7 +28,7 @@ public abstract class Actuator implements Serializable {
     /**
      * metoto para setar uma room
      *
-     * @param room- recebe a divisão que vai atuar
+     * @param room- recebe uma divisão que vai atuar
      */
     public void setRoom(Room room) {
         this.room = room;
