@@ -29,7 +29,7 @@ public abstract class Actuator implements Serializable {
     /**
      * metoto para setar uma room
      *
-     * @param room
+     * @param room- recebe a divisão que vai atuar
      */
     public void setRoom(Room room) {
         this.room = room;

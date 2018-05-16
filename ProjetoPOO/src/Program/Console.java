@@ -62,7 +62,7 @@ public class Console implements Serializable {
     }
 
     /**
-     * metodo que liga ou desliga a plug e todos os que estiverem com ela
+     * metodo que liga ou desliga as tomadas e todos os que estiverem com ela
      * acedida pela sala
      *
      * @param room

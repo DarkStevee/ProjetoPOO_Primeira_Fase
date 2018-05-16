@@ -15,12 +15,7 @@ public class TemperatureSensor extends Sensor {
     private int temperature;
     private PowerPlug plug;
 
-    /**
-     *
-     * @param plug
-     * @param temperature
-     * @param room
-     */
+   
     public TemperatureSensor(PowerPlug plug, int temperature, Room room) {
         super(room);
         this.plug = plug;
@@ -29,7 +24,7 @@ public class TemperatureSensor extends Sensor {
 
     /**
      *
-     * @return
+     * @return a temperatura da divisão
      * @throws NotPluggedInException
      */
     public int getTemperature() throws NotPluggedInException {
@@ -41,7 +36,7 @@ public class TemperatureSensor extends Sensor {
     }
 
     /**
-     *
+     * Seta a temperatura da divisão
      * @param temperature
      */
     public void setTemperature(int temperature) {
