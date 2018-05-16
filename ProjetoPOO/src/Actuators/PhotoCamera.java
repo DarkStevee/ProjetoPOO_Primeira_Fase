@@ -3,7 +3,6 @@ package Actuators;
 import Media.Photo;
 import Media.SaveAndLoadFiles;
 import Media.TypePhoto;
-import Media.Video;
 
 /**
  * @author Andre Ribeiro n_170221006
@@ -27,6 +26,7 @@ public class PhotoCamera extends Actuator {
      * Metodo para a persistencia de uma fotografia
      *
      * @param filename - nome do arquivo que sera salvo
+     * @param typePhoto - o tipo da foto
      * @param idRoom - id da divisão onde a foto foi tirada
      * @throws IllegalArgumentException - Erro caso a persistencia seja incorreta
      */

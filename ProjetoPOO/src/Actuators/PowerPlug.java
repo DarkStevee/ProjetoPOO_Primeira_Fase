@@ -14,7 +14,7 @@ import java.time.LocalTime;
  */
 public class PowerPlug extends Actuator {
 
-    private Identifier plugId;
+    private final Identifier plugId;
     private boolean on;
     private LocalTime internalTime;
     private TemperatureSensor tempSensor;
