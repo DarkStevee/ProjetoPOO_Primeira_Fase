@@ -28,6 +28,7 @@ public class Console {
     private TemperatureControlModule tcm;
     private AlarmControlModule acm;
     private Alert alert;
+    private Identifier wifiIdentifier;
 
     /**
      * Construtor que inicializa todos dos modulos
@@ -42,6 +43,7 @@ public class Console {
         this.clientNumber = ++clientCounter;
         wifiConnections = wifi;
         rooms = roomstoAdd;
+        wifiIdentifier = new Identifier("Consola");
 
         this.alert = alert;
 
@@ -50,15 +52,24 @@ public class Console {
         acm = new AlarmControlModule(rooms, alert);
 
     }
+    
+    public Identifier getIdentifier() {
+        return wifiIdentifier;
+    }
 
-    public void setStateOfPlugOfRoom(Room room, boolean state) throws NotPluggedInException, IllegalArgumentException { //liga ou desliga a plug e todos os que estiverem com ela
+    public void setStateOfPlugOfRoom(Room room, boolean state) throws NotPluggedInException, IllegalArgumentException, ParedException { 
+        //liga ou desliga a plug e todos os que estiverem com ela
         // acedida pela sala, room.getPowerPlug()
         if (room != null) {
-            PowerPlug plug = room.getPowerPlug();
-            if (plug != null) {
-                plug.changeState(state);
+            if (wifiConnections.isPared(room.getPowerPlug().getIdentifier())) {
+                PowerPlug plug = room.getPowerPlug();
+                if (plug != null) {
+                    plug.changeState(state);
+                } else {
+                    throw new NotPluggedInException("This plug doesnt exist");
+                }
             } else {
-                throw new NotPluggedInException("This plug doesnt exist");
+                throw new ParedException("This plug is not pared with the wifi connections");
             }
         } else {
             throw new IllegalArgumentException("This room doesnt exist");
@@ -126,14 +137,11 @@ public class Console {
      * @param identifier1
      * @param identifer2
      * @param password
+     * @throws Exceptions.ParedException
      */
-    public void addConnection(Identifier identifier1, Identifier identifer2, String password) throws IllegalArgumentException {
+    public void addConnection(Identifier identifier1, Identifier identifer2, String password) throws IllegalArgumentException, NullPointerException, ParedException {
         if (password.equals(wifiConnections.getPassword())) {
-            try {
                 wifiConnections.addConnection(identifier1, identifer2);
-            } catch (NullPointerException | ParedException ex) {
-                System.out.println(ex.getMessage());
-            }
         } else {
             throw new IllegalArgumentException("The password isnt correct");
         }

@@ -2,6 +2,7 @@ package Program;
 
 import Actuators.*;
 import Exceptions.NotPluggedInException;
+import Exceptions.ParedException;
 import Exceptions.SensorNotImplomentedException;
 import Sensors.*;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class Main {
         }
         try {
             //apos ligarmos o plug pela consola
-            System.out.println("Success:");
+            System.out.println("Error that the plug isnt connected to the wifi");
             centralConsole.setStateOfPlugOfRoom(room, true);
             try {
                 room.getMovementSensor().changeState(true);
@@ -66,7 +67,20 @@ public class Main {
             } catch (NotPluggedInException | SensorNotImplomentedException ex) {
                 System.out.println(ex.getMessage());
             }
-        } catch (NotPluggedInException | IllegalArgumentException ex) {
+        } catch (NotPluggedInException | IllegalArgumentException | ParedException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        //succes with the connection on the wifi
+        try {
+            System.out.println("Success");
+            centralConsole.addConnection(plug.getIdentifier(), centralConsole.getIdentifier(), "Casa");
+            centralConsole.setStateOfPlugOfRoom(room, true);
+            room.getMovementSensor().changeState(true);
+            centralConsole.act();
+            System.out.println(centralConsole.toString());
+            System.out.println(room.getTemperatureSensor().getTemperature());
+        } catch (SensorNotImplomentedException | NotPluggedInException | IllegalArgumentException | ParedException ex) {
             System.out.println(ex.getMessage());
         }
 

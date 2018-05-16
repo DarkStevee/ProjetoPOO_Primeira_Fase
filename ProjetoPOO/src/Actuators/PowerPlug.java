@@ -44,6 +44,10 @@ public class PowerPlug extends Actuator {
         tempSensor = null;
     }
 
+    public Identifier getIdentifier() {
+        return plugId;
+    }
+    
     public boolean isOn() {
         return on;
     }
